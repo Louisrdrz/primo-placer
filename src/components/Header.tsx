@@ -1,5 +1,4 @@
 import { Badge } from "@/components/ui/badge";
-import logoBnp from "@/assets/logo_bnp.png";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -14,13 +13,11 @@ const Header = () => {
   return (
     <header className="border-b border-gold/10 bg-card backdrop-blur-sm sticky top-0 z-50 shadow-luxury">
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <img 
-            src={logoBnp} 
-            alt="BNP Paribas Private Banking" 
-            className="h-14 w-auto cursor-pointer hover:opacity-80 transition-premium" 
-            onClick={handleLogoClick}
-          />
+        <div className="flex items-center gap-4 cursor-pointer hover:opacity-80 transition-premium" onClick={handleLogoClick}>
+          <div>
+            <h1 className="text-2xl font-serif font-bold tracking-tight text-foreground">EDUFIN</h1>
+            <p className="text-xs text-muted-foreground tracking-wide">by BNP Paribas</p>
+          </div>
           <div className="h-8 w-px bg-gold/20"></div>
           <span className="text-sm font-serif text-muted-foreground tracking-wide">Private Banking</span>
         </div>
