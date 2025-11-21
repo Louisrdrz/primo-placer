@@ -3,14 +3,27 @@ import { Badge } from "@/components/ui/badge";
 import { TrendingDown, TrendingUp, AlertCircle } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
 
-const data = [
-  { year: "0", without: 500, with: 500 },
-  { year: "2", without: 508, with: 540 },
-  { year: "4", without: 513, with: 580 },
-  { year: "6", without: 517, with: 610 },
-  { year: "8", without: 520, with: 628 },
-  { year: "10", without: 523, with: 646 },
-];
+// Calculate compound interest projection
+const calculateCompoundGrowth = (principal: number, rate: number, years: number) => {
+  return Math.round(principal * Math.pow(1 + rate, years));
+};
+
+const generateProjectionData = () => {
+  const initialAmount = 500;
+  const withoutRate = 0.005; // 0.5% annual return (very low, no optimization)
+  const withRate = 0.055; // 5.5% annual return (optimized strategy with compound interest)
+  
+  return [
+    { year: "0", without: initialAmount, with: initialAmount },
+    { year: "2", without: calculateCompoundGrowth(initialAmount, withoutRate, 2), with: calculateCompoundGrowth(initialAmount, withRate, 2) },
+    { year: "4", without: calculateCompoundGrowth(initialAmount, withoutRate, 4), with: calculateCompoundGrowth(initialAmount, withRate, 4) },
+    { year: "6", without: calculateCompoundGrowth(initialAmount, withoutRate, 6), with: calculateCompoundGrowth(initialAmount, withRate, 6) },
+    { year: "8", without: calculateCompoundGrowth(initialAmount, withoutRate, 8), with: calculateCompoundGrowth(initialAmount, withRate, 8) },
+    { year: "10", without: calculateCompoundGrowth(initialAmount, withoutRate, 10), with: calculateCompoundGrowth(initialAmount, withRate, 10) },
+  ];
+};
+
+const data = generateProjectionData();
 
 const ProjectionChart = () => {
   return (
@@ -39,7 +52,7 @@ const ProjectionChart = () => {
               <h4 className="font-semibold text-destructive">Without guidance</h4>
             </div>
             <p className="text-sm text-muted-foreground mb-4">No optimized strategy</p>
-            <div className="text-4xl font-bold text-destructive mb-2">€523,000</div>
+            <div className="text-4xl font-bold text-destructive mb-2">€{data[data.length - 1].without.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">Final value after 10 years</p>
           </div>
           
@@ -49,7 +62,7 @@ const ProjectionChart = () => {
               <h4 className="font-semibold text-success">With Edufin Learning</h4>
             </div>
             <p className="text-sm text-muted-foreground mb-4">Optimized personalized strategy</p>
-            <div className="text-4xl font-bold text-success mb-2">€646,000</div>
+            <div className="text-4xl font-bold text-success mb-2">€{data[data.length - 1].with.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">Final value after 10 years</p>
           </div>
         </div>
@@ -65,7 +78,7 @@ const ProjectionChart = () => {
               <YAxis 
                 label={{ value: 'Thousands €', angle: -90, position: 'insideLeft' }}
                 stroke="hsl(var(--muted-foreground))"
-                domain={[400, 650]}
+                domain={[400, 'auto']}
               />
               <Tooltip 
                 contentStyle={{ 
@@ -99,7 +112,7 @@ const ProjectionChart = () => {
           <div className="flex items-center gap-3">
             <TrendingUp className="w-6 h-6 text-warning-foreground" />
             <div>
-              <p className="font-bold text-lg">Potential difference: +€123,000</p>
+              <p className="font-bold text-lg">Potential difference: +€{(data[data.length - 1].with - data[data.length - 1].without).toLocaleString()}</p>
               <p className="text-sm text-muted-foreground">thanks to better investment decisions</p>
             </div>
           </div>
