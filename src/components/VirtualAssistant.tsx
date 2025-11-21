@@ -3,6 +3,7 @@ import { MessageCircle, X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import avatarImage from "@/assets/avatar-advisor.jpg";
 
 const VirtualAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,8 +45,8 @@ const VirtualAssistant = () => {
         {/* Header */}
         <div className="gradient-premium p-4 rounded-t-2xl flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-gold">
-              <span className="text-2xl">👨‍💼</span>
+            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-gold overflow-hidden">
+              <img src={avatarImage} alt="Financial Advisor" className="w-full h-full object-cover" />
             </div>
             <div>
               <h3 className="font-serif font-semibold text-white">Your Advisor</h3>
@@ -73,8 +74,8 @@ const VirtualAssistant = () => {
               )}
             >
               {msg.role === "assistant" && (
-                <div className="w-8 h-8 rounded-full bg-gradient-gold flex items-center justify-center flex-shrink-0">
-                  <span className="text-sm">👨‍💼</span>
+                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 overflow-hidden shadow-sm">
+                  <img src={avatarImage} alt="Advisor" className="w-full h-full object-cover" />
                 </div>
               )}
               <div
@@ -118,8 +119,8 @@ const VirtualAssistant = () => {
           className="relative group"
         >
           {/* Main Avatar */}
-          <div className="w-40 h-40 rounded-full bg-white shadow-premium hover:scale-105 transition-all duration-300 flex items-center justify-center border-4 border-gold/30 animate-breathe animate-subtle-glow">
-            <span className="text-8xl">👨‍💼</span>
+          <div className="w-40 h-40 rounded-full bg-white shadow-premium hover:scale-105 transition-all duration-300 flex items-center justify-center border-4 border-gold/30 animate-breathe animate-subtle-glow overflow-hidden">
+            <img src={avatarImage} alt="Your Financial Advisor" className="w-full h-full object-cover" />
           </div>
           
           {/* Online Status */}
