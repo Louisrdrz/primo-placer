@@ -15,6 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Noto Serif', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -68,6 +69,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        bamboo: {
+          DEFAULT: "hsl(var(--bamboo))",
+          light: "hsl(var(--bamboo-light))",
+        },
+        stone: "hsl(var(--stone))",
+        moss: "hsl(var(--moss))",
       },
       borderRadius: {
         lg: "var(--radius)",
