@@ -8,6 +8,7 @@ import RiskToleranceStep from "@/components/onboarding/RiskToleranceStep";
 import InheritanceAmountStep from "@/components/onboarding/InheritanceAmountStep";
 import LearningStyleStep from "@/components/onboarding/LearningStyleStep";
 import ResultsStep from "@/components/onboarding/ResultsStep";
+import PauseStep from "@/components/onboarding/PauseStep";
 
 export interface OnboardingData {
   knowledgeLevel?: string;
@@ -16,6 +17,7 @@ export interface OnboardingData {
   riskTolerance?: string;
   inheritanceAmount?: string;
   learningStyle?: string;
+  pause?: string;
 }
 
 const Onboarding = () => {
@@ -26,6 +28,7 @@ const Onboarding = () => {
   const steps = [
     { component: KnowledgeLevelStep, key: 'knowledgeLevel' },
     { component: InheritanceAmountStep, key: 'inheritanceAmount' },
+    { component: PauseStep, key: 'pause' },
     { component: InvestmentGoalStep, key: 'investmentGoal' },
     { component: TimeHorizonStep, key: 'timeHorizon' },
     { component: RiskToleranceStep, key: 'riskTolerance' },
@@ -35,9 +38,13 @@ const Onboarding = () => {
 
   const progress = ((currentStep + 1) / steps.length) * 100;
 
-  const handleNext = (value: string) => {
+  const handleNext = (value?: string) => {
     const key = steps[currentStep].key as keyof OnboardingData;
-    setData({ ...data, [key]: value });
+    
+    // For PauseStep, we don't need to save a value
+    if (key !== 'pause' && value) {
+      setData({ ...data, [key]: value });
+    }
 
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
@@ -45,7 +52,7 @@ const Onboarding = () => {
       // Save to localStorage and navigate to PEA learning page
       localStorage.setItem('onboardingComplete', 'true');
       localStorage.setItem('onboardingJustCompleted', 'true');
-      localStorage.setItem('onboardingData', JSON.stringify({ ...data, [key]: value }));
+      localStorage.setItem('onboardingData', JSON.stringify(data));
       navigate('/learning/pea-intro');
     }
   };
@@ -72,7 +79,7 @@ const Onboarding = () => {
         <div className="w-full max-w-2xl">
           <CurrentStepComponent 
             onNext={handleNext}
-            onBack={currentStep > 0 ? handleBack : undefined}
+            onBack={currentStep > 0 && steps[currentStep].key !== 'pause' ? handleBack : undefined}
             currentValue={data[steps[currentStep].key as keyof OnboardingData]}
           />
         </div>
