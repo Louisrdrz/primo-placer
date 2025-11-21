@@ -52,13 +52,13 @@ const PEAIntro = () => {
                   <p className="text-sm text-muted-foreground">Recommended holding period</p>
                 </div>
                 <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
-                  <div className="text-3xl font-bold text-primary mb-2">0%</div>
-                  <p className="text-sm text-muted-foreground">Income tax after 5 years*</p>
+                  <div className="text-3xl font-bold text-primary mb-2">17.2%</div>
+                  <p className="text-sm text-muted-foreground">Tax rate after 5 years*</p>
                 </div>
               </div>
 
               <p className="text-sm text-muted-foreground italic">
-                *Excluding social contributions of 17.2%
+                *Social contributions only (income tax exempt after 5 years)
               </p>
             </div>
           </CardContent>
@@ -123,7 +123,7 @@ const PEAIntro = () => {
               {[
                 {
                   title: "Tax advantage",
-                  description: "After 5 years, gains are exempt from income tax (but subject to social contributions of 17.2%)"
+                  description: "After 5 years, gains are subject only to social contributions of 17.2% (income tax exempt)"
                 },
                 {
                   title: "Deposit cap",
