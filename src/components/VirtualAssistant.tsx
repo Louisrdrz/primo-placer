@@ -112,13 +112,13 @@ const VirtualAssistant = () => {
       </div>
 
       {/* Floating Avatar - Large Doll */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-6 right-6 z-50 animate-gentle-float">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="relative group"
         >
           {/* Main Avatar */}
-          <div className="w-40 h-40 rounded-full bg-white shadow-premium hover:scale-105 transition-all duration-300 flex items-center justify-center border-4 border-gold/30">
+          <div className="w-40 h-40 rounded-full bg-white shadow-premium hover:scale-105 transition-all duration-300 flex items-center justify-center border-4 border-gold/30 animate-breathe animate-subtle-glow">
             <span className="text-8xl">👨‍💼</span>
           </div>
           
