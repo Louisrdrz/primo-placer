@@ -26,7 +26,7 @@ const Index = () => {
             onClick={() => navigate('/learning/pea-intro')}
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-gold text-noir rounded-xl font-semibold hover:opacity-90 transition-opacity shadow-premium"
           >
-            🎓 Commencer l'apprentissage du PEA
+            🎓 Start a new lesson
           </button>
         </div>
         
