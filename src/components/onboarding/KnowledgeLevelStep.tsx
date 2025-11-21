@@ -1,5 +1,6 @@
 import { BarChart3 } from "lucide-react";
 import OnboardingOption from "./OnboardingOption";
+import OnboardingCharacter from "./OnboardingCharacter";
 
 interface KnowledgeLevelStepProps {
   onNext: (value: string) => void;
@@ -42,28 +43,20 @@ const KnowledgeLevelStep = ({ onNext }: KnowledgeLevelStepProps) => {
   ];
 
   return (
-    <div className="animate-fade-in">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-foreground mb-4">
-          How much do you know about investing?
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          This helps us personalize your learning journey
-        </p>
-      </div>
-
-      <div className="space-y-3">
-        {options.map((option) => (
-          <OnboardingOption
-            key={option.value}
-            label={option.label}
-            icon={option.icon}
-            bars={option.bars}
-            onClick={() => onNext(option.value)}
-          />
-        ))}
-      </div>
-    </div>
+    <OnboardingCharacter
+      question="How much do you know about investing?"
+      subtitle="This helps us personalize your learning journey"
+    >
+      {options.map((option) => (
+        <OnboardingOption
+          key={option.value}
+          label={option.label}
+          icon={option.icon}
+          bars={option.bars}
+          onClick={() => onNext(option.value)}
+        />
+      ))}
+    </OnboardingCharacter>
   );
 };
 

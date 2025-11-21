@@ -1,5 +1,6 @@
 import { Home, GraduationCap, Palmtree, Shield } from "lucide-react";
 import OnboardingOption from "./OnboardingOption";
+import OnboardingCharacter from "./OnboardingCharacter";
 
 interface InvestmentGoalStepProps {
   onNext: (value: string) => void;
@@ -32,27 +33,19 @@ const InvestmentGoalStep = ({ onNext }: InvestmentGoalStepProps) => {
   ];
 
   return (
-    <div className="animate-fade-in">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-foreground mb-4">
-          What's your main investment goal?
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          Understanding your objectives helps us recommend the right path
-        </p>
-      </div>
-
-      <div className="space-y-3">
-        {options.map((option) => (
-          <OnboardingOption
-            key={option.value}
-            label={option.label}
-            icon={option.icon}
-            onClick={() => onNext(option.value)}
-          />
-        ))}
-      </div>
-    </div>
+    <OnboardingCharacter
+      question="What's your main investment goal?"
+      subtitle="Understanding your objectives helps us recommend the right path"
+    >
+      {options.map((option) => (
+        <OnboardingOption
+          key={option.value}
+          label={option.label}
+          icon={option.icon}
+          onClick={() => onNext(option.value)}
+        />
+      ))}
+    </OnboardingCharacter>
   );
 };
 
