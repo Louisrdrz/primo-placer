@@ -17,6 +17,13 @@ const Index = () => {
         
         <ProjectionChart />
         
+        <div className="my-12 text-center">
+          <h2 className="text-4xl font-serif font-semibold text-foreground mb-2">
+            Finish your journey to be a master of financial management
+          </h2>
+          <div className="w-24 h-1 bg-gradient-gold mx-auto mt-4 rounded-full"></div>
+        </div>
+        
         <GamificationBar />
         
         <ProgressPath />
