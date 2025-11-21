@@ -42,11 +42,11 @@ const Onboarding = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      // Save to localStorage and navigate to dashboard
+      // Save to localStorage and navigate to PEA learning page
       localStorage.setItem('onboardingComplete', 'true');
       localStorage.setItem('onboardingJustCompleted', 'true');
       localStorage.setItem('onboardingData', JSON.stringify({ ...data, [key]: value }));
-      navigate('/');
+      navigate('/learning/pea-intro');
     }
   };
 

@@ -27,14 +27,11 @@ const PEAIntro = () => {
         {/* Hero Card */}
         <Card className="mb-8 border-2 border-gold/20 shadow-premium">
           <CardHeader>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-gold flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-noir" />
-              </div>
-              <div>
-                <CardTitle className="text-3xl font-serif">Qu'est-ce qu'un PEA ?</CardTitle>
-                <p className="text-muted-foreground">Plan d'Épargne en Actions - Les bases</p>
-              </div>
+            <div className="text-center mb-6">
+              <h1 className="text-4xl font-serif font-bold text-foreground mb-3">
+                Nice to have you here! Let's learn our first financial product together
+              </h1>
+              <p className="text-lg text-muted-foreground">Plan d'Épargne en Actions - Les bases</p>
             </div>
           </CardHeader>
           <CardContent>
