@@ -10,8 +10,8 @@ const calculateCompoundGrowth = (principal: number, rate: number, years: number)
 
 const generateProjectionData = () => {
   const initialAmount = 500;
-  const withoutRate = 0.005; // 0.5% annual return (very low, no optimization)
-  const withRate = 0.055; // 5.5% annual return (optimized strategy with compound interest)
+  const withoutRate = 0.0046; // 0.46% annual return (very low, no optimization)
+  const withRate = 0.0548; // 5.48% annual return (optimized strategy with compound interest)
   
   return [
     { year: "0", without: initialAmount, with: initialAmount },
