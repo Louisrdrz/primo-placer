@@ -1,10 +1,25 @@
 import { Badge } from "@/components/ui/badge";
 import logoBnp from "@/assets/logo_bnp.png";
+import { useNavigate } from "react-router-dom";
+
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    localStorage.removeItem('onboardingComplete');
+    localStorage.removeItem('onboardingData');
+    navigate('/onboarding');
+  };
+
   return <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img src={logoBnp} alt="BNP Paribas" className="h-12 w-auto" />
+          <img 
+            src={logoBnp} 
+            alt="BNP Paribas" 
+            className="h-12 w-auto cursor-pointer hover:opacity-80 transition-opacity" 
+            onClick={handleLogoClick}
+          />
           
         </div>
         
