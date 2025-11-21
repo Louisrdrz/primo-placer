@@ -10,19 +10,19 @@ const Header = () => {
             <Building2 className="w-6 h-6 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="font-bold text-lg">BNP Héritage</h1>
-            <p className="text-xs text-muted-foreground">Mon Parcours Héritage</p>
+            <h1 className="font-bold text-lg">BNP Heritage</h1>
+            <p className="text-xs text-muted-foreground">My Heritage Journey</p>
           </div>
         </div>
         
         <div className="flex items-center gap-4">
           <Badge variant="demo" className="text-xs font-medium">
-            Mode démo – aucun impact sur vos vrais comptes
+            Demo Mode – no impact on your real accounts
           </Badge>
           <div className="flex items-center gap-3">
             <div className="text-right">
               <p className="text-sm font-semibold">Vianney</p>
-              <p className="text-xs text-muted-foreground">Apprenti investisseur</p>
+              <p className="text-xs text-muted-foreground">Beginner Investor</p>
             </div>
             <div className="w-11 h-11 rounded-full bg-gradient-hero flex items-center justify-center text-white font-bold text-lg">
               V

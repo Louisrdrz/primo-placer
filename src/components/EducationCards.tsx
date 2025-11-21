@@ -7,27 +7,27 @@ import { Video, FileQuestion, FileText, Award, Bookmark } from "lucide-react";
 const educationItems = [
   {
     id: 1,
-    type: "Vidéo",
+    type: "Video",
     icon: Video,
-    title: "Les 3 erreurs à éviter quand on hérite",
+    title: "The 3 mistakes to avoid when inheriting",
     xp: 15,
-    action: "Regarder",
+    action: "Watch",
   },
   {
     id: 2,
     type: "Quiz",
     icon: FileQuestion,
-    title: "Es-tu prêt à investir ton héritage ?",
+    title: "Are you ready to invest your inheritance?",
     xp: 25,
-    action: "Lancer le quiz (3 min)",
+    action: "Start quiz (3 min)",
   },
   {
     id: 3,
     type: "Article",
     icon: FileText,
-    title: "Comprendre la fiscalité de l'héritage",
+    title: "Understanding inheritance taxation",
     xp: 10,
-    action: "À lire plus tard",
+    action: "Read later",
   },
 ];
 
@@ -37,12 +37,12 @@ const EducationCards = () => {
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-bold flex items-center gap-2">
           <Award className="w-6 h-6 text-accent" />
-          Tes prochaines briques d'éducation financière
+          Your next financial education building blocks
         </h3>
         <div className="flex items-center gap-3">
           <div className="text-right">
-            <p className="text-xs text-muted-foreground">Objectif</p>
-            <p className="text-sm font-semibold">Éducation financière minimum</p>
+            <p className="text-xs text-muted-foreground">Goal</p>
+            <p className="text-sm font-semibold">Minimum financial education</p>
           </div>
           <div className="w-24">
             <Progress value={70} className="h-2" />

@@ -20,14 +20,14 @@ const ProjectionChart = () => {
           <div>
             <CardTitle className="flex items-center gap-2 mb-2">
               <AlertCircle className="w-5 h-5 text-warning" />
-              Ce que tu risques de perdre si tu ne passes pas à l'action
+              What you risk losing if you don't take action
             </CardTitle>
             <p className="text-sm text-muted-foreground">
-              Projection sur 10 ans de tes 100 000 € • Données indicatives, non contractuelles
+              10-year projection of your €100,000 • Indicative data, non-contractual
             </p>
           </div>
           <Badge variant="demo" className="text-xs">
-            Simulation basée sur ton profil
+            Simulation based on your profile
           </Badge>
         </div>
       </CardHeader>
@@ -36,21 +36,21 @@ const ProjectionChart = () => {
           <div className="p-6 rounded-2xl bg-destructive/5 border-2 border-destructive/20">
             <div className="flex items-center gap-2 mb-2">
               <TrendingDown className="w-5 h-5 text-destructive" />
-              <h4 className="font-semibold text-destructive">Sans accompagnement</h4>
+              <h4 className="font-semibold text-destructive">Without guidance</h4>
             </div>
-            <p className="text-sm text-muted-foreground mb-4">Pas de stratégie optimisée</p>
-            <div className="text-4xl font-bold text-destructive mb-2">112 000 €</div>
-            <p className="text-xs text-muted-foreground">Valeur finale après 10 ans</p>
+            <p className="text-sm text-muted-foreground mb-4">No optimized strategy</p>
+            <div className="text-4xl font-bold text-destructive mb-2">€112,000</div>
+            <p className="text-xs text-muted-foreground">Final value after 10 years</p>
           </div>
           
           <div className="p-6 rounded-2xl bg-success/10 border-2 border-success">
             <div className="flex items-center gap-2 mb-2">
               <TrendingUp className="w-5 h-5 text-success" />
-              <h4 className="font-semibold text-success">Avec ton parcours BNP Héritage</h4>
+              <h4 className="font-semibold text-success">With your BNP Heritage journey</h4>
             </div>
-            <p className="text-sm text-muted-foreground mb-4">Stratégie personnalisée optimisée</p>
-            <div className="text-4xl font-bold text-success mb-2">146 000 €</div>
-            <p className="text-xs text-muted-foreground">Valeur finale après 10 ans</p>
+            <p className="text-sm text-muted-foreground mb-4">Optimized personalized strategy</p>
+            <div className="text-4xl font-bold text-success mb-2">€146,000</div>
+            <p className="text-xs text-muted-foreground">Final value after 10 years</p>
           </div>
         </div>
         
@@ -59,11 +59,11 @@ const ProjectionChart = () => {
             <LineChart data={data}>
               <XAxis 
                 dataKey="year" 
-                label={{ value: 'Années', position: 'insideBottom', offset: -5 }}
+                label={{ value: 'Years', position: 'insideBottom', offset: -5 }}
                 stroke="hsl(var(--muted-foreground))"
               />
               <YAxis 
-                label={{ value: 'Milliers €', angle: -90, position: 'insideLeft' }}
+                label={{ value: 'Thousands €', angle: -90, position: 'insideLeft' }}
                 stroke="hsl(var(--muted-foreground))"
               />
               <Tooltip 
@@ -79,7 +79,7 @@ const ProjectionChart = () => {
                 dataKey="without" 
                 stroke="hsl(var(--destructive))" 
                 strokeWidth={3}
-                name="Sans accompagnement"
+                name="Without guidance"
                 dot={{ fill: 'hsl(var(--destructive))', r: 4 }}
               />
               <Line 
@@ -87,7 +87,7 @@ const ProjectionChart = () => {
                 dataKey="with" 
                 stroke="hsl(var(--success))" 
                 strokeWidth={3}
-                name="Avec BNP Héritage"
+                name="With BNP Heritage"
                 dot={{ fill: 'hsl(var(--success))', r: 4 }}
               />
             </LineChart>
@@ -98,8 +98,8 @@ const ProjectionChart = () => {
           <div className="flex items-center gap-3">
             <TrendingUp className="w-6 h-6 text-warning-foreground" />
             <div>
-              <p className="font-bold text-lg">Différence potentielle : +34 000 €</p>
-              <p className="text-sm text-muted-foreground">grâce à de meilleures décisions d'investissement</p>
+              <p className="font-bold text-lg">Potential difference: +€34,000</p>
+              <p className="text-sm text-muted-foreground">thanks to better investment decisions</p>
             </div>
           </div>
         </div>

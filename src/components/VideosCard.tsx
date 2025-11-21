@@ -6,19 +6,19 @@ import { PlayCircle, Clock, SkipForward, Star } from "lucide-react";
 const videos = [
   {
     id: 1,
-    title: "Assurance-vie pour faire travailler ton héritage",
+    title: "Life insurance to grow your inheritance",
     duration: "4 min",
     recommended: true,
   },
   {
     id: 2,
-    title: "PEA : investir en actions européennes",
+    title: "PEA: investing in European stocks",
     duration: "6 min",
     recommended: true,
   },
   {
     id: 3,
-    title: "Immobilier : investir sans tout bloquer",
+    title: "Real estate: investing without locking everything",
     duration: "5 min",
     recommended: false,
   },
@@ -30,7 +30,7 @@ const VideosCard = () => {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <PlayCircle className="w-5 h-5 text-primary" />
-          Ta prochaine mission : comprendre les bons produits pour toi
+          Your next mission: understand the right products for you
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -51,12 +51,12 @@ const VideosCard = () => {
                     {video.recommended && (
                       <Badge variant="success" className="text-xs">
                         <Star className="w-3 h-3 mr-1" />
-                        Recommandé pour toi
+                        Recommended for you
                       </Badge>
                     )}
                     {!video.recommended && (
                       <Badge variant="outline" className="text-xs">
-                        Optionnel
+                        Optional
                       </Badge>
                     )}
                   </div>
@@ -70,10 +70,10 @@ const VideosCard = () => {
               <div className="flex items-center gap-2">
                 <Button variant="ghost" size="sm" className="text-muted-foreground">
                   <SkipForward className="w-4 h-4 mr-2" />
-                  Tu connais déjà ?
+                  Already know this?
                 </Button>
                 <Button variant="hero" size="sm">
-                  Regarder
+                  Watch
                 </Button>
               </div>
             </div>
@@ -83,7 +83,7 @@ const VideosCard = () => {
         <div className="mt-4 p-4 bg-muted/50 rounded-xl text-sm text-muted-foreground flex items-start gap-2">
           <SkipForward className="w-4 h-4 mt-0.5 flex-shrink-0" />
           <p>
-            <span className="font-semibold">Tu connais déjà un produit ?</span> Passe la vidéo pour gagner du temps.
+            <span className="font-semibold">Already know a product?</span> Skip the video to save time.
           </p>
         </div>
       </CardContent>
