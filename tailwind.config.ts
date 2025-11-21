@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Cormorant Garamond', 'Noto Serif', 'Georgia', 'serif'],
+        serif: ['Outfit', 'Inter', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
