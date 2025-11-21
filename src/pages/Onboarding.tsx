@@ -8,6 +8,8 @@ import RiskToleranceStep from "@/components/onboarding/RiskToleranceStep";
 import InheritanceAmountStep from "@/components/onboarding/InheritanceAmountStep";
 import LearningStyleStep from "@/components/onboarding/LearningStyleStep";
 import ResultsStep from "@/components/onboarding/ResultsStep";
+import bambooBlack from "@/assets/bamboo-black.png";
+import bambooGreen from "@/assets/bamboo-green.png";
 
 export interface OnboardingData {
   knowledgeLevel?: string;
@@ -58,7 +60,18 @@ const Onboarding = () => {
   const CurrentStepComponent = steps[currentStep].component;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col relative overflow-hidden">
+      {/* Bamboo decorations */}
+      <img 
+        src={bambooBlack} 
+        alt="" 
+        className="fixed top-0 left-0 h-96 opacity-5 pointer-events-none"
+      />
+      <img 
+        src={bambooGreen} 
+        alt="" 
+        className="fixed bottom-0 right-0 h-80 opacity-10 pointer-events-none"
+      />
       {/* Progress Bar */}
       <div className="w-full bg-card border-b border-border">
         <div className="max-w-3xl mx-auto px-6 py-4">
