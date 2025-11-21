@@ -32,9 +32,7 @@ const OnboardingOption = ({ label, icon: Icon, bars, onClick }: OnboardingOption
 
       {/* Icon (if no bars) */}
       {!bars && (
-        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-smooth">
-          <Icon className="w-6 h-6 text-primary" />
-        </div>
+        <Icon className="w-16 h-16 text-bamboo-600 group-hover:text-moss-600 transition-smooth flex-shrink-0" strokeWidth={1.5} />
       )}
 
       {/* Label */}
