@@ -14,21 +14,25 @@ const TimeHorizonStep = ({ onNext }: TimeHorizonStepProps) => {
       value: 'short',
       label: "Less than 3 years",
       icon: Clock,
+      color: "text-amber-600",
     },
     {
       value: 'medium',
       label: "3 to 7 years",
       icon: Calendar,
+      color: "text-emerald-600",
     },
     {
       value: 'long',
       label: "7 to 15 years",
       icon: CalendarRange,
+      color: "text-teal-600",
     },
     {
       value: 'very-long',
       label: "More than 15 years",
       icon: Hourglass,
+      color: "text-blue-600",
     },
   ];
 
@@ -42,6 +46,7 @@ const TimeHorizonStep = ({ onNext }: TimeHorizonStepProps) => {
           key={option.value}
           label={option.label}
           icon={option.icon}
+          color={option.color}
           onClick={() => onNext(option.value)}
         />
       ))}

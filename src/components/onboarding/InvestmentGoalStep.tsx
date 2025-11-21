@@ -14,21 +14,25 @@ const InvestmentGoalStep = ({ onNext }: InvestmentGoalStepProps) => {
       value: 'property',
       label: "Buy a property",
       icon: Home,
+      color: "text-rose-600",
     },
     {
       value: 'education',
       label: "Fund education (mine or my children's)",
       icon: GraduationCap,
+      color: "text-purple-600",
     },
     {
       value: 'retirement',
       label: "Prepare for retirement",
       icon: Palmtree,
+      color: "text-lime-600",
     },
     {
       value: 'security',
       label: "Build financial security and wealth",
       icon: Shield,
+      color: "text-sky-600",
     },
   ];
 
@@ -42,6 +46,7 @@ const InvestmentGoalStep = ({ onNext }: InvestmentGoalStepProps) => {
           key={option.value}
           label={option.label}
           icon={option.icon}
+          color={option.color}
           onClick={() => onNext(option.value)}
         />
       ))}

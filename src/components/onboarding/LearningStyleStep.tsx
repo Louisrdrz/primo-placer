@@ -14,21 +14,25 @@ const LearningStyleStep = ({ onNext }: LearningStyleStepProps) => {
       value: 'video',
       label: "Interactive videos - I learn best by watching",
       icon: Video,
+      color: "text-red-600",
     },
     {
       value: 'reading',
       label: "Articles and guides - I prefer reading at my pace",
       icon: BookOpen,
+      color: "text-orange-600",
     },
     {
       value: 'practice',
       label: "Quizzes and exercises - I learn by doing",
       icon: Zap,
+      color: "text-violet-600",
     },
     {
       value: 'mixed',
       label: "Mix of everything - I like variety",
       icon: Users,
+      color: "text-fuchsia-600",
     },
   ];
 
@@ -42,6 +46,7 @@ const LearningStyleStep = ({ onNext }: LearningStyleStepProps) => {
           key={option.value}
           label={option.label}
           icon={option.icon}
+          color={option.color}
           onClick={() => onNext(option.value)}
         />
       ))}
