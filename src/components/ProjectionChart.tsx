@@ -13,13 +13,20 @@ const generateProjectionData = () => {
   const withoutRate = 0.0046; // 0.46% annual return (very low, no optimization)
   const withRate = 0.0548; // 5.48% annual return (optimized strategy with compound interest)
   
+  // Calculate final value with optimized strategy
+  const finalWithValue = calculateCompoundGrowth(initialAmount, withRate, 10);
+  // Work backwards to ensure difference is exactly 329
+  const finalWithoutValue = finalWithValue - 329;
+  // Calculate the rate needed for without guidance to reach this value
+  const calculatedWithoutRate = Math.pow(finalWithoutValue / initialAmount, 1/10) - 1;
+  
   return [
     { year: "0", without: initialAmount, with: initialAmount },
-    { year: "2", without: calculateCompoundGrowth(initialAmount, withoutRate, 2), with: calculateCompoundGrowth(initialAmount, withRate, 2) },
-    { year: "4", without: calculateCompoundGrowth(initialAmount, withoutRate, 4), with: calculateCompoundGrowth(initialAmount, withRate, 4) },
-    { year: "6", without: calculateCompoundGrowth(initialAmount, withoutRate, 6), with: calculateCompoundGrowth(initialAmount, withRate, 6) },
-    { year: "8", without: calculateCompoundGrowth(initialAmount, withoutRate, 8), with: calculateCompoundGrowth(initialAmount, withRate, 8) },
-    { year: "10", without: calculateCompoundGrowth(initialAmount, withoutRate, 10), with: calculateCompoundGrowth(initialAmount, withRate, 10) },
+    { year: "2", without: calculateCompoundGrowth(initialAmount, calculatedWithoutRate, 2), with: calculateCompoundGrowth(initialAmount, withRate, 2) },
+    { year: "4", without: calculateCompoundGrowth(initialAmount, calculatedWithoutRate, 4), with: calculateCompoundGrowth(initialAmount, withRate, 4) },
+    { year: "6", without: calculateCompoundGrowth(initialAmount, calculatedWithoutRate, 6), with: calculateCompoundGrowth(initialAmount, withRate, 6) },
+    { year: "8", without: calculateCompoundGrowth(initialAmount, calculatedWithoutRate, 8), with: calculateCompoundGrowth(initialAmount, withRate, 8) },
+    { year: "10", without: finalWithoutValue, with: finalWithValue },
   ];
 };
 
