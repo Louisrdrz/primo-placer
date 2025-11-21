@@ -1,24 +1,21 @@
 import { ReactNode } from "react";
 import characterImage from "@/assets/onboarding-character.png";
-
 interface OnboardingCharacterProps {
   question: string;
   subtitle: string;
   children: ReactNode;
 }
-
-const OnboardingCharacter = ({ question, subtitle, children }: OnboardingCharacterProps) => {
-  return (
-    <div className="animate-fade-in">
+const OnboardingCharacter = ({
+  question,
+  subtitle,
+  children
+}: OnboardingCharacterProps) => {
+  return <div className="animate-fade-in">
       {/* Character Section */}
       <div className="flex items-start gap-6 mb-8">
         <div className="flex-shrink-0 animate-scale-in">
           <div className="relative">
-            <img 
-              src={characterImage} 
-              alt="Your BNP Heritage advisor" 
-              className="w-24 h-24 rounded-full border-4 border-primary/20 shadow-lg"
-            />
+            <img alt="Your BNP Heritage advisor" className="w-24 h-24 rounded-full border-4 border-primary/20 shadow-lg" src="/lovable-uploads/9672b589-67db-4882-9a10-49f42521ced2.png" />
             <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-primary rounded-full border-4 border-background animate-pulse" />
           </div>
         </div>
@@ -42,8 +39,6 @@ const OnboardingCharacter = ({ question, subtitle, children }: OnboardingCharact
       <div className="space-y-3 pl-4">
         {children}
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default OnboardingCharacter;
