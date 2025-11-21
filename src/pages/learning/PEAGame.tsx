@@ -146,21 +146,36 @@ const PEAGame = () => {
                 </ul>
               </div>
 
-              <div className="flex gap-4">
+              <div className="space-y-4">
                 <Button
-                  variant="outline"
-                  onClick={() => window.location.reload()}
-                  className="flex-1"
+                  asChild
+                  className="w-full bg-gradient-gold text-noir hover:opacity-90 font-semibold text-lg h-14"
                 >
-                  Replay
+                  <a 
+                    href="https://mabanqueprivee.bnpparibas/fr/patrimoine/gestion-actifs-financiers/pea-bancaire?utm_source=chatgpt.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    Invest now wisely with BNP
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </a>
                 </Button>
-                <Button
-                  onClick={() => navigate('/')}
-                  className="flex-1 bg-gradient-gold text-noir hover:opacity-90"
-                >
-                  Back to dashboard
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
+
+                <div className="flex gap-4">
+                  <Button
+                    variant="outline"
+                    onClick={() => window.location.reload()}
+                    className="flex-1"
+                  >
+                    Replay
+                  </Button>
+                  <Button
+                    onClick={() => navigate('/')}
+                    className="flex-1"
+                  >
+                    Back to dashboard
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
