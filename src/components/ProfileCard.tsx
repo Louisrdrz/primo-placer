@@ -22,7 +22,7 @@ const ProfileCard = () => {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground font-medium mb-1">Portfolio Value</p>
-                <p className="text-3xl font-serif font-semibold text-gold">€100,000</p>
+                <p className="text-3xl font-serif font-semibold text-gold">€500,000</p>
               </div>
             </div>
             

@@ -23,7 +23,7 @@ const ProjectionChart = () => {
               What you risk losing if you don't take action
             </CardTitle>
             <p className="text-sm text-muted-foreground">
-              10-year projection of your €100,000 • Indicative data, non-contractual
+              10-year projection of your €500,000 • Indicative data, non-contractual
             </p>
           </div>
           <Badge variant="demo" className="text-xs">
