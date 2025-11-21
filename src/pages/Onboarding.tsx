@@ -7,6 +7,7 @@ import TimeHorizonStep from "@/components/onboarding/TimeHorizonStep";
 import RiskToleranceStep from "@/components/onboarding/RiskToleranceStep";
 import InheritanceAmountStep from "@/components/onboarding/InheritanceAmountStep";
 import LearningStyleStep from "@/components/onboarding/LearningStyleStep";
+import ResultsStep from "@/components/onboarding/ResultsStep";
 
 export interface OnboardingData {
   knowledgeLevel?: string;
@@ -29,6 +30,7 @@ const Onboarding = () => {
     { component: TimeHorizonStep, key: 'timeHorizon' },
     { component: RiskToleranceStep, key: 'riskTolerance' },
     { component: LearningStyleStep, key: 'learningStyle' },
+    { component: ResultsStep, key: 'results' },
   ];
 
   const progress = ((currentStep + 1) / steps.length) * 100;
