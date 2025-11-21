@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { AlertCircle, TrendingUp } from "lucide-react";
-
 const HeroSection = () => {
-  return (
-    <div className="gradient-hero rounded-3xl p-8 text-white shadow-xl mb-8">
+  return <div className="gradient-hero rounded-3xl p-8 text-white shadow-xl mb-8">
       <div className="max-w-3xl">
         <h2 className="text-4xl font-bold mb-3">
           Bienvenue Vianney, faisons travailler tes 100 000 € intelligemment.
@@ -28,7 +26,7 @@ const HeroSection = () => {
         </div>
         
         <div className="flex items-center gap-4">
-          <Button variant="hero" size="lg" className="bg-white text-primary hover:bg-white/90 shadow-2xl">
+          <Button variant="hero" size="lg" className="shadow-2xl bg-slate-50 text-slate-50">
             Continuer mon parcours
           </Button>
           <div className="text-sm opacity-95">
@@ -36,8 +34,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default HeroSection;
