@@ -37,15 +37,15 @@ const VirtualAssistant = () => {
       {/* Chat Window */}
       <div
         className={cn(
-          "fixed bottom-24 right-6 w-96 bg-card border border-gold/20 rounded-2xl shadow-premium transition-all duration-300 z-50",
+          "fixed bottom-48 right-6 w-96 bg-card border border-gold/20 rounded-2xl shadow-premium transition-all duration-300 z-40",
           isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
         )}
       >
         {/* Header */}
         <div className="gradient-premium p-4 rounded-t-2xl flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-gold">
-              <span className="text-xl">👨‍💼</span>
+            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-gold">
+              <span className="text-2xl">👨‍💼</span>
             </div>
             <div>
               <h3 className="font-serif font-semibold text-white">Your Advisor</h3>
@@ -111,22 +111,30 @@ const VirtualAssistant = () => {
         </div>
       </div>
 
-      {/* Floating Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-gradient-gold shadow-gold hover:scale-110 transition-all duration-300 z-50 flex items-center justify-center group"
-      >
-        {isOpen ? (
-          <X className="w-6 h-6 text-noir" />
-        ) : (
-          <>
-            <div className="absolute inset-0 rounded-full bg-white flex items-center justify-center">
-              <span className="text-3xl">👨‍💼</span>
+      {/* Floating Avatar - Large Doll */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative group"
+        >
+          {/* Main Avatar */}
+          <div className="w-40 h-40 rounded-full bg-white shadow-premium hover:scale-105 transition-all duration-300 flex items-center justify-center border-4 border-gold/30">
+            <span className="text-8xl">👨‍💼</span>
+          </div>
+          
+          {/* Online Status */}
+          <div className="absolute bottom-2 right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white animate-pulse shadow-gold" />
+          
+          {/* Message Bubble */}
+          {!isOpen && (
+            <div className="absolute -top-16 right-0 bg-gradient-gold text-noir px-4 py-3 rounded-2xl shadow-gold max-w-xs animate-pulse">
+              <p className="text-sm font-semibold">Need help?</p>
+              <p className="text-xs">Ask me anything!</p>
+              <div className="absolute -bottom-2 right-8 w-4 h-4 bg-gold rotate-45"></div>
             </div>
-            <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white animate-pulse" />
-          </>
-        )}
-      </button>
+          )}
+        </button>
+      </div>
     </>
   );
 };
