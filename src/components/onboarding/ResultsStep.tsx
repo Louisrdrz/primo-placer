@@ -9,12 +9,12 @@ interface ResultsStepProps {
 }
 
 const data = [
-  { year: "0", without: 100, with: 100 },
-  { year: "2", without: 103, with: 108 },
-  { year: "4", without: 106, with: 118 },
-  { year: "6", without: 108, with: 128 },
-  { year: "8", without: 110, with: 138 },
-  { year: "10", without: 112, with: 146 },
+  { year: "0", without: 500, with: 500 },
+  { year: "2", without: 508, with: 540 },
+  { year: "4", without: 513, with: 580 },
+  { year: "6", without: 517, with: 610 },
+  { year: "8", without: 520, with: 628 },
+  { year: "10", without: 523, with: 646 },
 ];
 
 const ResultsStep = ({ onNext, onBack }: ResultsStepProps) => {
@@ -44,17 +44,17 @@ const ResultsStep = ({ onNext, onBack }: ResultsStepProps) => {
             <h4 className="font-semibold text-destructive">Without guidance</h4>
           </div>
           <p className="text-sm text-muted-foreground mb-4">No optimized strategy</p>
-          <div className="text-4xl font-bold text-destructive mb-2">€112,000</div>
+          <div className="text-4xl font-bold text-destructive mb-2">€523,000</div>
           <p className="text-xs text-muted-foreground">Final value after 10 years</p>
         </div>
         
         <div className="p-6 rounded-2xl bg-success/10 border-2 border-success">
           <div className="flex items-center gap-2 mb-2">
             <TrendingUp className="w-5 h-5 text-success" />
-            <h4 className="font-semibold text-success">With smart money management</h4>
+            <h4 className="font-semibold text-success">With Edufin Learning</h4>
           </div>
           <p className="text-sm text-muted-foreground mb-4">Optimized personalized strategy</p>
-          <div className="text-4xl font-bold text-success mb-2">€146,000</div>
+          <div className="text-4xl font-bold text-success mb-2">€646,000</div>
           <p className="text-xs text-muted-foreground">Final value after 10 years</p>
         </div>
       </div>
@@ -92,7 +92,7 @@ const ResultsStep = ({ onNext, onBack }: ResultsStepProps) => {
               dataKey="with" 
               stroke="hsl(var(--success))" 
               strokeWidth={3}
-              name="With BNP Heritage"
+              name="With Edufin Learning"
               dot={{ fill: 'hsl(var(--success))', r: 4 }}
             />
           </LineChart>
@@ -103,7 +103,7 @@ const ResultsStep = ({ onNext, onBack }: ResultsStepProps) => {
         <div className="flex items-center gap-3">
           <TrendingUp className="w-6 h-6 text-warning-foreground" />
           <div>
-            <p className="font-bold text-lg">Potential difference: +€34,000</p>
+            <p className="font-bold text-lg">Potential difference: +€123,000</p>
             <p className="text-sm text-muted-foreground">thanks to better investment decisions</p>
           </div>
         </div>
