@@ -112,26 +112,30 @@ const VirtualAssistant = () => {
         </div>
       </div>
 
-      {/* Floating Avatar - Large Doll */}
+      {/* Floating Avatar - Large Mascot */}
       <div className="fixed bottom-6 right-6 z-50 animate-gentle-float">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="relative group"
         >
-          {/* Main Avatar */}
-          <div className="w-40 h-40 rounded-full bg-white shadow-premium hover:scale-105 transition-all duration-300 flex items-center justify-center border-4 border-gold/30 animate-breathe animate-subtle-glow overflow-hidden">
-            <img src={avatarImage} alt="Your Financial Advisor" className="w-full h-full object-cover" />
+          {/* Main Avatar - No circle, direct image */}
+          <div className="w-52 hover:scale-105 transition-all duration-300 animate-breathe animate-subtle-glow">
+            <img 
+              src={avatarImage} 
+              alt="Your Financial Advisor" 
+              className="w-full h-auto drop-shadow-2xl"
+            />
           </div>
           
           {/* Online Status */}
-          <div className="absolute bottom-2 right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white animate-pulse shadow-gold" />
+          <div className="absolute bottom-4 right-4 w-6 h-6 bg-green-500 rounded-full border-4 border-white animate-pulse shadow-gold" />
           
           {/* Message Bubble */}
           {!isOpen && (
-            <div className="absolute -top-16 right-0 bg-gradient-gold text-noir px-4 py-3 rounded-2xl shadow-gold max-w-xs animate-pulse">
+            <div className="absolute -top-20 right-0 bg-gradient-gold text-noir px-5 py-3 rounded-2xl shadow-gold max-w-xs animate-pulse">
               <p className="text-sm font-semibold">Need help?</p>
-              <p className="text-xs">Ask me anything!</p>
-              <div className="absolute -bottom-2 right-8 w-4 h-4 bg-gold rotate-45"></div>
+              <p className="text-xs">Click to chat!</p>
+              <div className="absolute -bottom-2 right-12 w-4 h-4 bg-gold rotate-45"></div>
             </div>
           )}
         </button>
