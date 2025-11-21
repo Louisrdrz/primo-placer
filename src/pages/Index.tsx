@@ -6,6 +6,7 @@ import VideosCard from "@/components/VideosCard";
 import ProjectionChart from "@/components/ProjectionChart";
 import EducationCards from "@/components/EducationCards";
 import GamificationBar from "@/components/GamificationBar";
+import VirtualAssistant from "@/components/VirtualAssistant";
 
 const Index = () => {
   return (
@@ -34,6 +35,8 @@ const Index = () => {
         
         <EducationCards />
       </main>
+      
+      <VirtualAssistant />
     </div>
   );
 };
