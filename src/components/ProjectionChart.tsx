@@ -1,0 +1,111 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { TrendingDown, TrendingUp, AlertCircle } from "lucide-react";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
+
+const data = [
+  { year: "0", without: 100, with: 100 },
+  { year: "2", without: 103, with: 108 },
+  { year: "4", without: 106, with: 118 },
+  { year: "6", without: 108, with: 128 },
+  { year: "8", without: 110, with: 138 },
+  { year: "10", without: 112, with: 146 },
+];
+
+const ProjectionChart = () => {
+  return (
+    <Card className="mb-8">
+      <CardHeader>
+        <div className="flex items-start justify-between">
+          <div>
+            <CardTitle className="flex items-center gap-2 mb-2">
+              <AlertCircle className="w-5 h-5 text-warning" />
+              Ce que tu risques de perdre si tu ne passes pas à l'action
+            </CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Projection sur 10 ans de tes 100 000 € • Données indicatives, non contractuelles
+            </p>
+          </div>
+          <Badge variant="demo" className="text-xs">
+            Simulation basée sur ton profil
+          </Badge>
+        </div>
+      </CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-2 gap-6 mb-6">
+          <div className="p-6 rounded-2xl bg-destructive/5 border-2 border-destructive/20">
+            <div className="flex items-center gap-2 mb-2">
+              <TrendingDown className="w-5 h-5 text-destructive" />
+              <h4 className="font-semibold text-destructive">Sans accompagnement</h4>
+            </div>
+            <p className="text-sm text-muted-foreground mb-4">Pas de stratégie optimisée</p>
+            <div className="text-4xl font-bold text-destructive mb-2">112 000 €</div>
+            <p className="text-xs text-muted-foreground">Valeur finale après 10 ans</p>
+          </div>
+          
+          <div className="p-6 rounded-2xl bg-success/10 border-2 border-success">
+            <div className="flex items-center gap-2 mb-2">
+              <TrendingUp className="w-5 h-5 text-success" />
+              <h4 className="font-semibold text-success">Avec ton parcours BNP Héritage</h4>
+            </div>
+            <p className="text-sm text-muted-foreground mb-4">Stratégie personnalisée optimisée</p>
+            <div className="text-4xl font-bold text-success mb-2">146 000 €</div>
+            <p className="text-xs text-muted-foreground">Valeur finale après 10 ans</p>
+          </div>
+        </div>
+        
+        <div className="h-64 w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={data}>
+              <XAxis 
+                dataKey="year" 
+                label={{ value: 'Années', position: 'insideBottom', offset: -5 }}
+                stroke="hsl(var(--muted-foreground))"
+              />
+              <YAxis 
+                label={{ value: 'Milliers €', angle: -90, position: 'insideLeft' }}
+                stroke="hsl(var(--muted-foreground))"
+              />
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: 'hsl(var(--card))',
+                  border: '1px solid hsl(var(--border))',
+                  borderRadius: '0.75rem',
+                }}
+              />
+              <Legend />
+              <Line 
+                type="monotone" 
+                dataKey="without" 
+                stroke="hsl(var(--destructive))" 
+                strokeWidth={3}
+                name="Sans accompagnement"
+                dot={{ fill: 'hsl(var(--destructive))', r: 4 }}
+              />
+              <Line 
+                type="monotone" 
+                dataKey="with" 
+                stroke="hsl(var(--success))" 
+                strokeWidth={3}
+                name="Avec BNP Héritage"
+                dot={{ fill: 'hsl(var(--success))', r: 4 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+        
+        <div className="mt-6 p-5 bg-warning/10 border-2 border-warning/30 rounded-2xl">
+          <div className="flex items-center gap-3">
+            <TrendingUp className="w-6 h-6 text-warning-foreground" />
+            <div>
+              <p className="font-bold text-lg">Différence potentielle : +34 000 €</p>
+              <p className="text-sm text-muted-foreground">grâce à de meilleures décisions d'investissement</p>
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default ProjectionChart;
