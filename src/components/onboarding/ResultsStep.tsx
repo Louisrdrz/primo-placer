@@ -70,6 +70,7 @@ const ResultsStep = ({ onNext, onBack }: ResultsStepProps) => {
             <YAxis 
               label={{ value: 'Thousands €', angle: -90, position: 'insideLeft' }}
               stroke="hsl(var(--muted-foreground))"
+              domain={[400, 650]}
             />
             <Tooltip 
               contentStyle={{ 
