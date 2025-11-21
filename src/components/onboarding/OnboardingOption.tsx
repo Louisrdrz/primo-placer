@@ -7,9 +7,10 @@ interface OnboardingOptionProps {
   bars?: number;
   onClick: () => void;
   color?: string;
+  barColor?: string;
 }
 
-const OnboardingOption = ({ label, icon: Icon, bars, onClick, color = "bg-bamboo-500" }: OnboardingOptionProps) => {
+const OnboardingOption = ({ label, icon: Icon, bars, onClick, color = "bg-bamboo-500", barColor = "bg-primary" }: OnboardingOptionProps) => {
   return (
     <button
       onClick={onClick}
@@ -23,7 +24,7 @@ const OnboardingOption = ({ label, icon: Icon, bars, onClick, color = "bg-bamboo
               key={i}
               className={cn(
                 "w-2 rounded-sm transition-smooth",
-                i < bars ? "bg-primary" : "bg-muted"
+                i < bars ? barColor : "bg-muted"
               )}
               style={{ height: `${((i + 1) / 5) * 100}%` }}
             />
