@@ -52,13 +52,13 @@ const PEAIntro = () => {
                   <p className="text-sm text-muted-foreground">Recommended holding period</p>
                 </div>
                 <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
-                  <div className="text-3xl font-bold text-primary mb-2">17.2%</div>
-                  <p className="text-sm text-muted-foreground">Total tax after 5 years*</p>
+                  <div className="text-3xl font-bold text-primary mb-2">0%</div>
+                  <p className="text-sm text-muted-foreground">Income tax after 5 years*</p>
                 </div>
               </div>
 
               <p className="text-sm text-muted-foreground italic">
-                *Only social contributions (17.2%), income tax is exempt
+                *Excluding social contributions of 17.2%
               </p>
             </div>
           </CardContent>

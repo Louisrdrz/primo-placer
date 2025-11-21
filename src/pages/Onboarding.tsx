@@ -8,7 +8,6 @@ import RiskToleranceStep from "@/components/onboarding/RiskToleranceStep";
 import InheritanceAmountStep from "@/components/onboarding/InheritanceAmountStep";
 import LearningStyleStep from "@/components/onboarding/LearningStyleStep";
 import ResultsStep from "@/components/onboarding/ResultsStep";
-import BreathingStep from "@/components/onboarding/BreathingStep";
 
 export interface OnboardingData {
   knowledgeLevel?: string;
@@ -27,7 +26,6 @@ const Onboarding = () => {
   const steps = [
     { component: KnowledgeLevelStep, key: 'knowledgeLevel' },
     { component: InheritanceAmountStep, key: 'inheritanceAmount' },
-    { component: BreathingStep, key: 'breathing' },
     { component: InvestmentGoalStep, key: 'investmentGoal' },
     { component: TimeHorizonStep, key: 'timeHorizon' },
     { component: RiskToleranceStep, key: 'riskTolerance' },
@@ -37,18 +35,9 @@ const Onboarding = () => {
 
   const progress = ((currentStep + 1) / steps.length) * 100;
 
-  const handleNext = (value?: string) => {
-    const key = steps[currentStep].key;
-    
-    // For breathing step, just advance without saving data
-    if (key === 'breathing') {
-      setCurrentStep(currentStep + 1);
-      return;
-    }
-    
-    if (value) {
-      setData({ ...data, [key]: value });
-    }
+  const handleNext = (value: string) => {
+    const key = steps[currentStep].key as keyof OnboardingData;
+    setData({ ...data, [key]: value });
 
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
@@ -68,11 +57,6 @@ const Onboarding = () => {
   };
 
   const CurrentStepComponent = steps[currentStep].component;
-
-  // Special handling for BreathingStep - no progress bar or back button
-  if (steps[currentStep].key === 'breathing') {
-    return <BreathingStep onNext={() => handleNext()} />;
-  }
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
