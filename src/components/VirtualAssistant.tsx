@@ -1,35 +1,72 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { streamChat } from "@/utils/chatStream";
+import { toast } from "sonner";
+import pandaImage from "@/assets/onboarding-character.png";
+
+type Message = { role: "user" | "assistant"; content: string };
 
 const VirtualAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hello! I'm your financial advisor. How can I help you today?",
+      content: "Hello! I'm your financial advisor panda. How can I help you today?",
     },
   ]);
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const handleSend = () => {
-    if (!message.trim()) return;
 
-    setMessages([...messages, { role: "user", content: message }]);
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleSend = async () => {
+    if (!message.trim() || isLoading) return;
+
+    const userMsg: Message = { role: "user", content: message };
+    setMessages(prev => [...prev, userMsg]);
     setMessage("");
+    setIsLoading(true);
 
-    // Simulate AI response
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "I understand your question. As your personal advisor, I'm here to guide you through your financial journey with expertise and care.",
+    let assistantContent = "";
+    const upsertAssistant = (nextChunk: string) => {
+      assistantContent += nextChunk;
+      setMessages(prev => {
+        const last = prev[prev.length - 1];
+        if (last?.role === "assistant") {
+          return prev.map((m, i) => 
+            i === prev.length - 1 ? { ...m, content: assistantContent } : m
+          );
+        }
+        return [...prev, { role: "assistant", content: assistantContent }];
+      });
+    };
+
+    try {
+      await streamChat({
+        messages: [...messages, userMsg],
+        onDelta: (chunk) => upsertAssistant(chunk),
+        onDone: () => setIsLoading(false),
+        onError: (error) => {
+          toast.error(error);
+          setIsLoading(false);
         },
-      ]);
-    }, 1000);
+      });
+    } catch (e) {
+      console.error(e);
+      toast.error("Failed to send message");
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -44,11 +81,11 @@ const VirtualAssistant = () => {
         {/* Header */}
         <div className="gradient-premium p-4 rounded-t-2xl flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-gold">
-              <span className="text-2xl">👨‍💼</span>
+            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-gold overflow-hidden">
+              <img src={pandaImage} alt="Panda advisor" className="w-full h-full object-cover" />
             </div>
             <div>
-              <h3 className="font-serif font-semibold text-white">Your Advisor</h3>
+              <h3 className="font-serif font-semibold text-white">Your Panda Advisor</h3>
               <p className="text-xs text-white/80">Always here to help</p>
             </div>
           </div>
@@ -73,8 +110,8 @@ const VirtualAssistant = () => {
               )}
             >
               {msg.role === "assistant" && (
-                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
-                  <span className="text-lg">👨‍💼</span>
+                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm overflow-hidden">
+                  <img src={pandaImage} alt="Panda" className="w-full h-full object-cover" />
                 </div>
               )}
               <div
@@ -89,6 +126,21 @@ const VirtualAssistant = () => {
               </div>
             </div>
           ))}
+          {isLoading && (
+            <div className="flex gap-2 justify-start">
+              <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm overflow-hidden">
+                <img src={pandaImage} alt="Panda" className="w-full h-full object-cover" />
+              </div>
+              <div className="bg-champagne/50 rounded-2xl px-4 py-2">
+                <div className="flex gap-1">
+                  <div className="w-2 h-2 bg-gold rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                  <div className="w-2 h-2 bg-gold rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                  <div className="w-2 h-2 bg-gold rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                </div>
+              </div>
+            </div>
+          )}
+          <div ref={messagesEndRef} />
         </div>
 
         {/* Input */}
@@ -103,7 +155,8 @@ const VirtualAssistant = () => {
             />
             <Button
               onClick={handleSend}
-              className="bg-gradient-gold text-noir hover:opacity-90"
+              disabled={isLoading}
+              className="bg-gradient-gold text-noir hover:opacity-90 disabled:opacity-50"
             >
               <Send className="w-4 h-4" />
             </Button>
@@ -117,20 +170,20 @@ const VirtualAssistant = () => {
           onClick={() => setIsOpen(!isOpen)}
           className="relative group"
         >
-          {/* Main Avatar - Professional Emoji */}
-          <div className="text-[200px] leading-none hover:scale-105 transition-all duration-300 animate-breathe animate-subtle-glow drop-shadow-2xl">
-            👨‍💼
+          {/* Panda Avatar - Smaller */}
+          <div className="w-32 h-32 rounded-full overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 animate-breathe bg-white">
+            <img src={pandaImage} alt="Panda advisor" className="w-full h-full object-cover" />
           </div>
           
           {/* Online Status */}
-          <div className="absolute bottom-4 right-4 w-6 h-6 bg-green-500 rounded-full border-4 border-white animate-pulse shadow-gold" />
+          <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse shadow-gold" />
           
           {/* Message Bubble */}
           {!isOpen && (
-            <div className="absolute -top-20 right-0 bg-gradient-gold text-noir px-5 py-3 rounded-2xl shadow-gold max-w-xs animate-pulse">
-              <p className="text-sm font-semibold">Need help?</p>
+            <div className="absolute -top-16 -left-4 bg-gradient-gold text-noir px-4 py-2 rounded-2xl shadow-gold max-w-xs animate-pulse">
+              <p className="text-xs font-semibold">Need help?</p>
               <p className="text-xs">Click to chat!</p>
-              <div className="absolute -bottom-2 right-12 w-4 h-4 bg-gold rotate-45"></div>
+              <div className="absolute -bottom-2 right-8 w-3 h-3 bg-gold rotate-45"></div>
             </div>
           )}
         </button>
