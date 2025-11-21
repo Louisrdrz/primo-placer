@@ -1,0 +1,264 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "@/components/Header";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle2, XCircle, Trophy, Star, ArrowRight, Timer } from "lucide-react";
+import { toast } from "sonner";
+
+interface Investment {
+  id: number;
+  name: string;
+  type: string;
+  eligible: boolean;
+  country: string;
+}
+
+const investments: Investment[] = [
+  { id: 1, name: "Total Energies", type: "Action", eligible: true, country: "France" },
+  { id: 2, name: "Apple Inc.", type: "Action", eligible: false, country: "USA" },
+  { id: 3, name: "LVMH", type: "Action", eligible: true, country: "France" },
+  { id: 4, name: "Bitcoin", type: "Crypto", eligible: false, country: "N/A" },
+  { id: 5, name: "Siemens AG", type: "Action", eligible: true, country: "Allemagne" },
+  { id: 6, name: "Alibaba", type: "Action", eligible: false, country: "Chine" },
+  { id: 7, name: "SAP SE", type: "Action", eligible: true, country: "Allemagne" },
+  { id: 8, name: "Immobilier locatif", type: "Immobilier", eligible: false, country: "France" },
+  { id: 9, name: "Renault", type: "Action", eligible: true, country: "France" },
+  { id: 10, name: "Tesla", type: "Action", eligible: false, country: "USA" },
+];
+
+const PEAGame = () => {
+  const navigate = useNavigate();
+  const [score, setScore] = useState(0);
+  const [lives, setLives] = useState(3);
+  const [currentInvestmentIndex, setCurrentInvestmentIndex] = useState(0);
+  const [shuffledInvestments, setShuffledInvestments] = useState<Investment[]>([]);
+  const [gameOver, setGameOver] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(30);
+  const [isTimerActive, setIsTimerActive] = useState(true);
+
+  useEffect(() => {
+    // Shuffle investments on mount
+    setShuffledInvestments([...investments].sort(() => Math.random() - 0.5));
+  }, []);
+
+  useEffect(() => {
+    if (isTimerActive && timeLeft > 0 && !gameOver) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (timeLeft === 0) {
+      handleAnswer(false);
+    }
+  }, [timeLeft, isTimerActive, gameOver]);
+
+  const handleAnswer = (userThinks: boolean) => {
+    if (gameOver || currentInvestmentIndex >= shuffledInvestments.length) return;
+
+    const currentInvestment = shuffledInvestments[currentInvestmentIndex];
+    const isCorrect = userThinks === currentInvestment.eligible;
+
+    if (isCorrect) {
+      setScore(score + 10);
+      toast.success(`✅ Correct ! ${currentInvestment.eligible ? "Éligible" : "Non éligible"} au PEA`);
+    } else {
+      setLives(lives - 1);
+      toast.error(`❌ Erreur ! ${currentInvestment.name} est ${currentInvestment.eligible ? "éligible" : "non éligible"}`);
+      
+      if (lives <= 1) {
+        setGameOver(true);
+        setIsTimerActive(false);
+        return;
+      }
+    }
+
+    if (currentInvestmentIndex < shuffledInvestments.length - 1) {
+      setCurrentInvestmentIndex(currentInvestmentIndex + 1);
+      setTimeLeft(30);
+    } else {
+      setGameOver(true);
+      setIsTimerActive(false);
+    }
+  };
+
+  if (shuffledInvestments.length === 0) {
+    return <div>Chargement...</div>;
+  }
+
+  if (gameOver) {
+    const totalQuestions = currentInvestmentIndex + 1;
+    const percentage = (score / (totalQuestions * 10)) * 100;
+
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        
+        <main className="max-w-4xl mx-auto px-6 py-8">
+          <Card className="border-2 border-gold/20 shadow-premium">
+            <CardHeader className="text-center">
+              <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-gold flex items-center justify-center">
+                <Trophy className="w-12 h-12 text-noir" />
+              </div>
+              <CardTitle className="text-4xl font-serif mb-2">Partie terminée !</CardTitle>
+              <p className="text-muted-foreground">
+                {lives === 0 ? "Continuez à apprendre !" : "Bravo, vous maîtrisez le PEA ! 🎉"}
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center mb-8">
+                <div className="text-6xl font-bold text-gold mb-4">
+                  {score} points
+                </div>
+                <div className="flex items-center justify-center gap-2 mb-6">
+                  {[...Array(3)].map((_, idx) => (
+                    <Star
+                      key={idx}
+                      className={`w-8 h-8 ${
+                        idx < lives ? "text-gold fill-gold" : "text-muted"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <p className="text-lg text-muted-foreground">
+                  {percentage >= 80
+                    ? "Expert PEA ! 🌟"
+                    : percentage >= 60
+                    ? "Bon niveau ! 👍"
+                    : "Revoyez les bases ! 📚"}
+                </p>
+              </div>
+
+              <div className="p-6 rounded-xl bg-muted/50 mb-8">
+                <h3 className="font-semibold mb-4 text-center">💡 Rappel : Critères d'éligibilité PEA</h3>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                    <span>Actions de sociétés ayant leur siège dans l'Union Européenne</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <XCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
+                    <span>Actions américaines, asiatiques ou d'autres continents : non éligibles</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <XCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
+                    <span>Cryptomonnaies, immobilier physique : non éligibles</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="flex gap-4">
+                <Button
+                  variant="outline"
+                  onClick={() => window.location.reload()}
+                  className="flex-1"
+                >
+                  Rejouer
+                </Button>
+                <Button
+                  onClick={() => navigate('/')}
+                  className="flex-1 bg-gradient-gold text-noir hover:opacity-90"
+                >
+                  Retour au dashboard
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </main>
+      </div>
+    );
+  }
+
+  const currentInvestment = shuffledInvestments[currentInvestmentIndex];
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Header />
+      
+      <main className="max-w-4xl mx-auto px-6 py-8">
+        {/* Game Stats */}
+        <div className="flex justify-between items-center mb-8">
+          <div className="flex items-center gap-4">
+            <div className="px-4 py-2 bg-gold/10 rounded-xl border border-gold/20">
+              <div className="text-sm text-muted-foreground">Score</div>
+              <div className="text-2xl font-bold text-gold">{score}</div>
+            </div>
+            
+            <div className="px-4 py-2 bg-card rounded-xl border border-border">
+              <div className="text-sm text-muted-foreground">Vies</div>
+              <div className="flex gap-1">
+                {[...Array(3)].map((_, idx) => (
+                  <Star
+                    key={idx}
+                    className={`w-6 h-6 ${
+                      idx < lives ? "text-gold fill-gold" : "text-muted"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 px-4 py-2 bg-destructive/10 rounded-xl border border-destructive/20">
+            <Timer className="w-5 h-5 text-destructive" />
+            <span className="text-2xl font-bold text-destructive">{timeLeft}s</span>
+          </div>
+        </div>
+
+        {/* Game Card */}
+        <Card className="border-2 border-gold/20 shadow-premium">
+          <CardHeader className="text-center">
+            <div className="mb-4">
+              <Badge variant="outline" className="mb-2">
+                Question {currentInvestmentIndex + 1}/{shuffledInvestments.length}
+              </Badge>
+            </div>
+            <CardTitle className="text-3xl font-serif mb-2">
+              Ce placement est-il éligible au PEA ?
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="mb-8 p-8 bg-gradient-to-br from-gold/5 to-gold/10 rounded-2xl border-2 border-gold/20 text-center">
+              <div className="text-4xl font-bold text-foreground mb-3">
+                {currentInvestment.name}
+              </div>
+              <div className="flex items-center justify-center gap-4 text-muted-foreground">
+                <Badge variant="secondary">{currentInvestment.type}</Badge>
+                <span>•</span>
+                <span>{currentInvestment.country}</span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <Button
+                onClick={() => handleAnswer(true)}
+                size="lg"
+                className="h-20 text-lg bg-success hover:bg-success/90 text-white"
+              >
+                <CheckCircle2 className="mr-2 w-6 h-6" />
+                Éligible
+              </Button>
+              
+              <Button
+                onClick={() => handleAnswer(false)}
+                size="lg"
+                className="h-20 text-lg bg-destructive hover:bg-destructive/90 text-white"
+              >
+                <XCircle className="mr-2 w-6 h-6" />
+                Non éligible
+              </Button>
+            </div>
+
+            <div className="mt-6 p-4 bg-muted/50 rounded-xl text-center">
+              <p className="text-sm text-muted-foreground">
+                💡 Indice : Le PEA accepte uniquement les actions de l'Union Européenne
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </main>
+    </div>
+  );
+};
+
+export default PEAGame;
