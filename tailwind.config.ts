@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Noto Serif', 'Georgia', 'serif'],
+        serif: ['Cormorant Garamond', 'Noto Serif', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -69,12 +69,13 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        bamboo: {
-          DEFAULT: "hsl(var(--bamboo))",
-          light: "hsl(var(--bamboo-light))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+          dark: "hsl(var(--gold-dark))",
         },
-        stone: "hsl(var(--stone))",
-        moss: "hsl(var(--moss))",
+        champagne: "hsl(var(--champagne))",
+        noir: "hsl(var(--noir))",
       },
       borderRadius: {
         lg: "var(--radius)",
