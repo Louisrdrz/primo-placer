@@ -6,9 +6,10 @@ interface OnboardingOptionProps {
   icon: LucideIcon;
   bars?: number;
   onClick: () => void;
+  color?: string;
 }
 
-const OnboardingOption = ({ label, icon: Icon, bars, onClick }: OnboardingOptionProps) => {
+const OnboardingOption = ({ label, icon: Icon, bars, onClick, color = "bg-bamboo-500" }: OnboardingOptionProps) => {
   return (
     <button
       onClick={onClick}
@@ -32,7 +33,9 @@ const OnboardingOption = ({ label, icon: Icon, bars, onClick }: OnboardingOption
 
       {/* Icon (if no bars) */}
       {!bars && (
-        <Icon className="w-16 h-16 text-bamboo-600 group-hover:text-moss-600 transition-smooth flex-shrink-0" strokeWidth={1.5} />
+        <div className={`w-12 h-12 rounded-full ${color}/10 flex items-center justify-center group-hover:${color}/20 transition-smooth`}>
+          <Icon className={`w-6 h-6 ${color}`} />
+        </div>
       )}
 
       {/* Label */}

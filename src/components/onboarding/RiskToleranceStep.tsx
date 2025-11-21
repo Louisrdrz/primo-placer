@@ -14,21 +14,25 @@ const RiskToleranceStep = ({ onNext }: RiskToleranceStepProps) => {
       value: 'conservative',
       label: "I want to preserve my capital above all",
       icon: Shield,
+      color: "text-blue-600",
     },
     {
       value: 'moderate',
       label: "I accept moderate risk for steady growth",
       icon: TrendingUp,
+      color: "text-green-600",
     },
     {
       value: 'balanced',
       label: "I'm comfortable with market fluctuations",
       icon: Zap,
+      color: "text-yellow-600",
     },
     {
       value: 'aggressive',
       label: "I want maximum growth and accept high volatility",
       icon: Flame,
+      color: "text-red-600",
     },
   ];
 
@@ -42,6 +46,7 @@ const RiskToleranceStep = ({ onNext }: RiskToleranceStepProps) => {
           key={option.value}
           label={option.label}
           icon={option.icon}
+          color={option.color}
           onClick={() => onNext(option.value)}
         />
       ))}

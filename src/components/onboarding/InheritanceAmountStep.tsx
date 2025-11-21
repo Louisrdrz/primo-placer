@@ -14,21 +14,25 @@ const InheritanceAmountStep = ({ onNext }: InheritanceAmountStepProps) => {
       value: 'small',
       label: "Less than €50,000",
       icon: Coins,
+      color: "text-yellow-600",
     },
     {
       value: 'medium',
       label: "€50,000 - €100,000",
       icon: Banknote,
+      color: "text-green-600",
     },
     {
       value: 'large',
       label: "€100,000 - €250,000",
       icon: TrendingUp,
+      color: "text-cyan-600",
     },
     {
       value: 'very-large',
       label: "More than €250,000",
       icon: Building2,
+      color: "text-indigo-600",
     },
   ];
 
@@ -42,6 +46,7 @@ const InheritanceAmountStep = ({ onNext }: InheritanceAmountStepProps) => {
           key={option.value}
           label={option.label}
           icon={option.icon}
+          color={option.color}
           onClick={() => onNext(option.value)}
         />
       ))}
