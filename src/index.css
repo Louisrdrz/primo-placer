@@ -184,4 +184,43 @@ All colors MUST be HSL.
   .border-gold {
     border-color: hsl(var(--gold));
   }
+  
+  @keyframes breathe {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+  }
+  
+  @keyframes gentle-float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  
+  @keyframes subtle-glow {
+    0%, 100% {
+      box-shadow: 0 8px 40px -8px hsl(45 65% 55% / 0.3);
+    }
+    50% {
+      box-shadow: 0 8px 40px -8px hsl(45 65% 55% / 0.5);
+    }
+  }
+  
+  .animate-breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+  
+  .animate-gentle-float {
+    animation: gentle-float 3s ease-in-out infinite;
+  }
+  
+  .animate-subtle-glow {
+    animation: subtle-glow 2s ease-in-out infinite;
+  }
 }
