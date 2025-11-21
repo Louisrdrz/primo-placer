@@ -51,7 +51,7 @@ const ResultsStep = ({ onNext, onBack }: ResultsStepProps) => {
         <div className="p-6 rounded-2xl bg-success/10 border-2 border-success">
           <div className="flex items-center gap-2 mb-2">
             <TrendingUp className="w-5 h-5 text-success" />
-            <h4 className="font-semibold text-success">With your BNP Heritage journey</h4>
+            <h4 className="font-semibold text-success">With smart money management</h4>
           </div>
           <p className="text-sm text-muted-foreground mb-4">Optimized personalized strategy</p>
           <div className="text-4xl font-bold text-success mb-2">€146,000</div>
@@ -125,7 +125,7 @@ const ResultsStep = ({ onNext, onBack }: ResultsStepProps) => {
           onClick={() => onNext("completed")}
           className="flex-1"
         >
-          Start my BNP Heritage journey
+          Start to learn how to manage your money
         </Button>
       </div>
     </div>
