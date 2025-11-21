@@ -16,7 +16,7 @@ const HeroSection = () => {
         </h2>
         
         <p className="text-xl opacity-90 mb-3 font-light leading-relaxed">
-          Your €100,000 deserves exceptional care.
+          Your €500,000 deserves exceptional care.
         </p>
         
         <p className="text-lg opacity-80 mb-8 font-light leading-relaxed">

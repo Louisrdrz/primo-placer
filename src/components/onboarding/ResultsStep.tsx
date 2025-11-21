@@ -28,7 +28,7 @@ const ResultsStep = ({ onNext, onBack }: ResultsStepProps) => {
               What you risk losing if you don't take action
             </h2>
             <p className="text-muted-foreground text-lg">
-              10-year projection of your €100,000 • Indicative data, non-contractual
+              10-year projection of your €500,000 • Indicative data, non-contractual
             </p>
           </div>
           <Badge variant="demo" className="text-xs">
