@@ -15,6 +15,8 @@ const Index = () => {
       <main className="max-w-7xl mx-auto px-6 py-8">
         <HeroSection />
         
+        <ProjectionChart />
+        
         <GamificationBar />
         
         <ProgressPath />
@@ -22,8 +24,6 @@ const Index = () => {
         <ProfileCard />
         
         <VideosCard />
-        
-        <ProjectionChart />
         
         <EducationCards />
       </main>
