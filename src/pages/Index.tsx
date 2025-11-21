@@ -7,10 +7,12 @@ import ProjectionChart from "@/components/ProjectionChart";
 import EducationCards from "@/components/EducationCards";
 import GamificationBar from "@/components/GamificationBar";
 import VirtualAssistant from "@/components/VirtualAssistant";
+import MoneyRain from "@/components/MoneyRain";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <MoneyRain />
       <Header />
       
       <main className="max-w-7xl mx-auto px-6 py-8">

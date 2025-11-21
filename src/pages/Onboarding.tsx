@@ -44,6 +44,7 @@ const Onboarding = () => {
     } else {
       // Save to localStorage and navigate to dashboard
       localStorage.setItem('onboardingComplete', 'true');
+      localStorage.setItem('onboardingJustCompleted', 'true');
       localStorage.setItem('onboardingData', JSON.stringify({ ...data, [key]: value }));
       navigate('/');
     }
