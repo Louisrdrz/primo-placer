@@ -3,7 +3,6 @@ import { MessageCircle, X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import avatarImage from "@/assets/avatar-advisor.jpg";
 
 const VirtualAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,8 +44,8 @@ const VirtualAssistant = () => {
         {/* Header */}
         <div className="gradient-premium p-4 rounded-t-2xl flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-gold overflow-hidden">
-              <img src={avatarImage} alt="Financial Advisor" className="w-full h-full object-cover" />
+            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-gold">
+              <span className="text-2xl">👨‍💼</span>
             </div>
             <div>
               <h3 className="font-serif font-semibold text-white">Your Advisor</h3>
@@ -74,8 +73,8 @@ const VirtualAssistant = () => {
               )}
             >
               {msg.role === "assistant" && (
-                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 overflow-hidden shadow-sm">
-                  <img src={avatarImage} alt="Advisor" className="w-full h-full object-cover" />
+                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <span className="text-lg">👨‍💼</span>
                 </div>
               )}
               <div
@@ -118,13 +117,9 @@ const VirtualAssistant = () => {
           onClick={() => setIsOpen(!isOpen)}
           className="relative group"
         >
-          {/* Main Avatar - No circle, direct image */}
-          <div className="w-52 hover:scale-105 transition-all duration-300 animate-breathe animate-subtle-glow">
-            <img 
-              src={avatarImage} 
-              alt="Your Financial Advisor" 
-              className="w-full h-auto drop-shadow-2xl"
-            />
+          {/* Main Avatar - Professional Emoji */}
+          <div className="text-[200px] leading-none hover:scale-105 transition-all duration-300 animate-breathe animate-subtle-glow drop-shadow-2xl">
+            👨‍💼
           </div>
           
           {/* Online Status */}
