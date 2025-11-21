@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ProgressPath from "@/components/ProgressPath";
@@ -10,6 +11,8 @@ import VirtualAssistant from "@/components/VirtualAssistant";
 import MoneyRain from "@/components/MoneyRain";
 
 const Index = () => {
+  const navigate = useNavigate();
+  
   return (
     <div className="min-h-screen bg-background">
       <MoneyRain />
@@ -19,12 +22,12 @@ const Index = () => {
         <HeroSection />
         
         <div className="mb-8 text-center">
-          <a
-            href="/learning/pea-intro"
+          <button
+            onClick={() => navigate('/learning/pea-intro')}
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-gold text-noir rounded-xl font-semibold hover:opacity-90 transition-opacity shadow-premium"
           >
             🎓 Commencer l'apprentissage du PEA
-          </a>
+          </button>
         </div>
         
         <ProjectionChart />
