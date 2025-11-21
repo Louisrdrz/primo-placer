@@ -20,48 +20,48 @@ interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    question: "Quel est le plafond de versement d'un PEA ?",
-    options: ["75 000€", "150 000€", "300 000€", "Illimité"],
+    question: "What is the deposit cap for a PEA?",
+    options: ["€75,000", "€150,000", "€300,000", "Unlimited"],
     correctAnswer: 1,
-    explanation: "Le plafond de versement d'un PEA est de 150 000€. Au-delà, vos gains continuent de croître sans limite."
+    explanation: "The deposit cap for a PEA is €150,000. Beyond that, your gains continue to grow without limit."
   },
   {
     id: 2,
-    question: "Après combien d'années les gains sont-ils exonérés d'impôt sur le revenu ?",
-    options: ["2 ans", "3 ans", "5 ans", "8 ans"],
+    question: "After how many years are gains exempt from income tax?",
+    options: ["2 years", "3 years", "5 years", "8 years"],
     correctAnswer: 2,
-    explanation: "Après 5 ans, les gains sont exonérés d'impôt sur le revenu (mais restent soumis aux prélèvements sociaux de 17,2%)."
+    explanation: "After 5 years, gains are exempt from income tax (but remain subject to social contributions of 17.2%)."
   },
   {
     id: 3,
-    question: "Dans quelles actions peut-on investir avec un PEA ?",
+    question: "Which shares can you invest in with a PEA?",
     options: [
-      "Uniquement des actions françaises",
-      "Actions de l'Union Européenne",
-      "Actions du monde entier",
-      "Uniquement des ETF"
+      "Only French shares",
+      "European Union shares",
+      "Worldwide shares",
+      "Only ETFs"
     ],
     correctAnswer: 1,
-    explanation: "Le PEA permet d'investir dans des actions de sociétés ayant leur siège dans l'Union Européenne."
+    explanation: "The PEA allows you to invest in shares of companies headquartered in the European Union."
   },
   {
     id: 4,
-    question: "Que se passe-t-il si vous effectuez un retrait avant 5 ans ?",
+    question: "What happens if you make a withdrawal before 5 years?",
     options: [
-      "Rien de particulier",
-      "Une pénalité de 10%",
-      "Clôture du plan et fiscalité moins avantageuse",
-      "Interdiction de retrait"
+      "Nothing special",
+      "A 10% penalty",
+      "Plan closure and less favorable taxation",
+      "Withdrawal prohibited"
     ],
     correctAnswer: 2,
-    explanation: "Un retrait avant 5 ans entraîne la clôture du PEA et l'application d'une fiscalité moins avantageuse."
+    explanation: "A withdrawal before 5 years results in the closure of the PEA and the application of less favorable taxation."
   },
   {
     id: 5,
-    question: "Quel est le taux des prélèvements sociaux sur les gains du PEA après 5 ans ?",
-    options: ["0%", "12,8%", "17,2%", "30%"],
+    question: "What is the rate of social contributions on PEA gains after 5 years?",
+    options: ["0%", "12.8%", "17.2%", "30%"],
     correctAnswer: 2,
-    explanation: "Les prélèvements sociaux sont de 17,2% même après 5 ans, seul l'impôt sur le revenu est exonéré."
+    explanation: "Social contributions are 17.2% even after 5 years, only income tax is exempt."
   }
 ];
 
@@ -123,8 +123,8 @@ const PEAQuiz = () => {
               <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-gold flex items-center justify-center">
                 <Trophy className="w-12 h-12 text-noir" />
               </div>
-              <CardTitle className="text-4xl font-serif mb-2">Quiz terminé !</CardTitle>
-              <p className="text-muted-foreground">Voici vos résultats</p>
+              <CardTitle className="text-4xl font-serif mb-2">Quiz completed!</CardTitle>
+              <p className="text-muted-foreground">Here are your results</p>
             </CardHeader>
             <CardContent>
               <div className="text-center mb-8">
@@ -132,7 +132,7 @@ const PEAQuiz = () => {
                   {score}/{questions.length}
                 </div>
                 <p className="text-lg text-muted-foreground">
-                  {percentage >= 80 ? "Excellent ! 🌟" : percentage >= 60 ? "Bien joué ! 👍" : "Continuez à apprendre ! 📚"}
+                  {percentage >= 80 ? "Excellent! 🌟" : percentage >= 60 ? "Well done! 👍" : "Keep learning! 📚"}
                 </p>
               </div>
 
@@ -170,13 +170,13 @@ const PEAQuiz = () => {
                   onClick={() => navigate('/learning/pea-intro')}
                   className="flex-1"
                 >
-                  Revoir la leçon
+                  Review the lesson
                 </Button>
                 <Button
                   onClick={() => navigate('/learning/pea-game')}
                   className="flex-1 bg-gradient-gold text-noir hover:opacity-90"
                 >
-                  Continuer vers le jeu
+                  Continue to game
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </div>
@@ -251,7 +251,7 @@ const PEAQuiz = () => {
 
             {hasAnswered && (
               <div className="mt-6 p-4 bg-muted rounded-xl">
-                <p className="text-sm font-semibold mb-2">💡 Explication :</p>
+                <p className="text-sm font-semibold mb-2">💡 Explanation:</p>
                 <p className="text-sm text-muted-foreground">{question.explanation}</p>
               </div>
             )}
@@ -264,7 +264,7 @@ const PEAQuiz = () => {
             variant="outline"
             onClick={() => currentQuestion > 0 ? setCurrentQuestion(currentQuestion - 1) : navigate('/learning/pea-intro')}
           >
-            {currentQuestion > 0 ? "Question précédente" : "Retour à la leçon"}
+            {currentQuestion > 0 ? "Previous question" : "Back to lesson"}
           </Button>
 
           {!hasAnswered ? (
@@ -273,14 +273,14 @@ const PEAQuiz = () => {
               className="bg-gradient-gold text-noir hover:opacity-90"
               disabled={selectedAnswers[currentQuestion] === null}
             >
-              Valider ma réponse
+              Validate my answer
             </Button>
           ) : (
             <Button
               onClick={handleNext}
               className="bg-gradient-gold text-noir hover:opacity-90"
             >
-              {currentQuestion < questions.length - 1 ? "Question suivante" : "Voir mes résultats"}
+              {currentQuestion < questions.length - 1 ? "Next question" : "See my results"}
               <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           )}

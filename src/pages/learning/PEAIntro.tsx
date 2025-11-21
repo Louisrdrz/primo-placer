@@ -18,8 +18,8 @@ const PEAIntro = () => {
         {/* Progress */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-2">
-            <h2 className="text-sm font-semibold text-muted-foreground">Votre progression</h2>
-            <span className="text-sm font-semibold text-gold">Chapitre 1/5</span>
+            <h2 className="text-sm font-semibold text-muted-foreground">Your progress</h2>
+            <span className="text-sm font-semibold text-gold">Chapter 1/5</span>
           </div>
           <Progress value={20} className="h-2" />
         </div>
@@ -29,36 +29,36 @@ const PEAIntro = () => {
           <CardHeader>
             <div className="text-center mb-6">
               <h1 className="text-4xl font-serif font-bold text-foreground mb-3">
-                Nice to have you here! Let's learn our first financial product together
+                Nice to have you here! Let&apos;s learn our first financial product together
               </h1>
-              <p className="text-lg text-muted-foreground">Plan d'Épargne en Actions - Les bases</p>
+              <p className="text-lg text-muted-foreground">Equity Savings Plan - The basics</p>
             </div>
           </CardHeader>
           <CardContent>
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed text-foreground mb-6">
-                Le <strong className="text-gold">PEA (Plan d'Épargne en Actions)</strong> est un compte 
-                d'investissement qui vous permet de constituer un portefeuille d'actions européennes 
-                tout en bénéficiant d'une fiscalité avantageuse.
+                The <strong className="text-gold">PEA (Equity Savings Plan)</strong> is an 
+                investment account that allows you to build a portfolio of European stocks 
+                while benefiting from favorable tax treatment.
               </p>
 
               <div className="grid md:grid-cols-3 gap-4 my-8">
                 <div className="p-4 rounded-xl bg-success/10 border border-success/20">
-                  <div className="text-3xl font-bold text-success mb-2">150k€</div>
-                  <p className="text-sm text-muted-foreground">Plafond maximum de versement</p>
+                  <div className="text-3xl font-bold text-success mb-2">€150k</div>
+                  <p className="text-sm text-muted-foreground">Maximum deposit cap</p>
                 </div>
                 <div className="p-4 rounded-xl bg-gold/10 border border-gold/20">
-                  <div className="text-3xl font-bold text-gold mb-2">5 ans</div>
-                  <p className="text-sm text-muted-foreground">Durée de blocage recommandée</p>
+                  <div className="text-3xl font-bold text-gold mb-2">5 years</div>
+                  <p className="text-sm text-muted-foreground">Recommended holding period</p>
                 </div>
                 <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
                   <div className="text-3xl font-bold text-primary mb-2">0%</div>
-                  <p className="text-sm text-muted-foreground">Impôts après 5 ans*</p>
+                  <p className="text-sm text-muted-foreground">Income tax after 5 years*</p>
                 </div>
               </div>
 
               <p className="text-sm text-muted-foreground italic">
-                *Hors prélèvements sociaux de 17,2%
+                *Excluding social contributions of 17.2%
               </p>
             </div>
           </CardContent>
@@ -69,7 +69,7 @@ const PEAIntro = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <PlayCircle className="w-6 h-6 text-gold" />
-              Vidéo explicative
+              Explanatory video
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -87,26 +87,26 @@ const PEAIntro = () => {
                 <div className="absolute inset-0 bg-success/20 flex items-center justify-center">
                   <div className="text-center">
                     <Trophy className="w-16 h-16 text-gold mx-auto mb-4 animate-bounce" />
-                    <p className="text-white font-semibold">Vidéo terminée ! 🎉</p>
+                    <p className="text-white font-semibold">Video completed! 🎉</p>
                   </div>
                 </div>
               )}
             </div>
             
             <div className="mt-4 p-4 bg-muted/50 rounded-lg">
-              <h4 className="font-semibold mb-2">Ce que vous allez apprendre :</h4>
+              <h4 className="font-semibold mb-2">What you will learn:</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-gold" />
-                  Les avantages fiscaux du PEA
+                  Tax benefits of the PEA
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-gold" />
-                  Comment ouvrir et alimenter un PEA
+                  How to open and fund a PEA
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-gold" />
-                  Les types d'actions éligibles
+                  Types of eligible shares
                 </li>
               </ul>
             </div>
@@ -116,26 +116,26 @@ const PEAIntro = () => {
         {/* Key Points */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle>Points clés à retenir</CardTitle>
+            <CardTitle>Key points to remember</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {[
                 {
-                  title: "Avantage fiscal",
-                  description: "Après 5 ans, les gains sont exonérés d'impôt sur le revenu (mais soumis aux prélèvements sociaux de 17,2%)"
+                  title: "Tax advantage",
+                  description: "After 5 years, gains are exempt from income tax (but subject to social contributions of 17.2%)"
                 },
                 {
-                  title: "Plafond de versement",
-                  description: "Vous pouvez verser jusqu'à 150 000€. Au-delà, vos gains continuent de croître sans limite."
+                  title: "Deposit cap",
+                  description: "You can deposit up to €150,000. Beyond that, your gains continue to grow without limit."
                 },
                 {
-                  title: "Actions européennes uniquement",
-                  description: "Le PEA permet d'investir dans des actions de sociétés ayant leur siège dans l'Union Européenne."
+                  title: "European shares only",
+                  description: "The PEA allows you to invest in shares of companies headquartered in the European Union."
                 },
                 {
-                  title: "Retraits avant 5 ans",
-                  description: "Possibles mais entraînent la clôture du plan et une fiscalité moins avantageuse."
+                  title: "Withdrawals before 5 years",
+                  description: "Possible but result in plan closure and less favorable tax treatment."
                 }
               ].map((point, idx) => (
                 <div key={idx} className="flex gap-4 p-4 rounded-xl bg-champagne/30 border border-gold/20">
@@ -158,7 +158,7 @@ const PEAIntro = () => {
             variant="outline"
             onClick={() => navigate('/')}
           >
-            Retour au dashboard
+            Back to dashboard
           </Button>
           
           <Button
@@ -166,7 +166,7 @@ const PEAIntro = () => {
             className="bg-gradient-gold text-noir hover:opacity-90"
             disabled={!videoWatched}
           >
-            Continuer vers le quiz
+            Continue to quiz
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
         </div>

@@ -16,16 +16,16 @@ interface Investment {
 }
 
 const investments: Investment[] = [
-  { id: 1, name: "Total Energies", type: "Action", eligible: true, country: "France" },
-  { id: 2, name: "Apple Inc.", type: "Action", eligible: false, country: "USA" },
-  { id: 3, name: "LVMH", type: "Action", eligible: true, country: "France" },
+  { id: 1, name: "Total Energies", type: "Stock", eligible: true, country: "France" },
+  { id: 2, name: "Apple Inc.", type: "Stock", eligible: false, country: "USA" },
+  { id: 3, name: "LVMH", type: "Stock", eligible: true, country: "France" },
   { id: 4, name: "Bitcoin", type: "Crypto", eligible: false, country: "N/A" },
-  { id: 5, name: "Siemens AG", type: "Action", eligible: true, country: "Allemagne" },
-  { id: 6, name: "Alibaba", type: "Action", eligible: false, country: "Chine" },
-  { id: 7, name: "SAP SE", type: "Action", eligible: true, country: "Allemagne" },
-  { id: 8, name: "Immobilier locatif", type: "Immobilier", eligible: false, country: "France" },
-  { id: 9, name: "Renault", type: "Action", eligible: true, country: "France" },
-  { id: 10, name: "Tesla", type: "Action", eligible: false, country: "USA" },
+  { id: 5, name: "Siemens AG", type: "Stock", eligible: true, country: "Germany" },
+  { id: 6, name: "Alibaba", type: "Stock", eligible: false, country: "China" },
+  { id: 7, name: "SAP SE", type: "Stock", eligible: true, country: "Germany" },
+  { id: 8, name: "Rental property", type: "Real Estate", eligible: false, country: "France" },
+  { id: 9, name: "Renault", type: "Stock", eligible: true, country: "France" },
+  { id: 10, name: "Tesla", type: "Stock", eligible: false, country: "USA" },
 ];
 
 const PEAGame = () => {
@@ -60,10 +60,10 @@ const PEAGame = () => {
 
     if (isCorrect) {
       setScore(score + 10);
-      toast.success(`✅ Correct ! ${currentInvestment.eligible ? "Éligible" : "Non éligible"} au PEA`);
+      toast.success(`✅ Correct! ${currentInvestment.eligible ? "Eligible" : "Not eligible"} for PEA`);
     } else {
       setLives(lives - 1);
-      toast.error(`❌ Erreur ! ${currentInvestment.name} est ${currentInvestment.eligible ? "éligible" : "non éligible"}`);
+      toast.error(`❌ Error! ${currentInvestment.name} is ${currentInvestment.eligible ? "eligible" : "not eligible"}`);
       
       if (lives <= 1) {
         setGameOver(true);
@@ -82,7 +82,7 @@ const PEAGame = () => {
   };
 
   if (shuffledInvestments.length === 0) {
-    return <div>Chargement...</div>;
+    return <div>Loading...</div>;
   }
 
   if (gameOver) {
@@ -99,9 +99,9 @@ const PEAGame = () => {
               <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-gold flex items-center justify-center">
                 <Trophy className="w-12 h-12 text-noir" />
               </div>
-              <CardTitle className="text-4xl font-serif mb-2">Partie terminée !</CardTitle>
+              <CardTitle className="text-4xl font-serif mb-2">Game over!</CardTitle>
               <p className="text-muted-foreground">
-                {lives === 0 ? "Continuez à apprendre !" : "Bravo, vous maîtrisez le PEA ! 🎉"}
+                {lives === 0 ? "Keep learning!" : "Congrats, you master the PEA! 🎉"}
               </p>
             </CardHeader>
             <CardContent>
@@ -121,27 +121,27 @@ const PEAGame = () => {
                 </div>
                 <p className="text-lg text-muted-foreground">
                   {percentage >= 80
-                    ? "Expert PEA ! 🌟"
+                    ? "PEA Expert! 🌟"
                     : percentage >= 60
-                    ? "Bon niveau ! 👍"
-                    : "Revoyez les bases ! 📚"}
+                    ? "Good level! 👍"
+                    : "Review the basics! 📚"}
                 </p>
               </div>
 
               <div className="p-6 rounded-xl bg-muted/50 mb-8">
-                <h3 className="font-semibold mb-4 text-center">💡 Rappel : Critères d'éligibilité PEA</h3>
+                <h3 className="font-semibold mb-4 text-center">💡 Reminder: PEA Eligibility Criteria</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                    <span>Actions de sociétés ayant leur siège dans l'Union Européenne</span>
+                    <span>Shares of companies headquartered in the European Union</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <XCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
-                    <span>Actions américaines, asiatiques ou d'autres continents : non éligibles</span>
+                    <span>American, Asian or other continental shares: not eligible</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <XCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
-                    <span>Cryptomonnaies, immobilier physique : non éligibles</span>
+                    <span>Cryptocurrencies, physical real estate: not eligible</span>
                   </li>
                 </ul>
               </div>
@@ -152,13 +152,13 @@ const PEAGame = () => {
                   onClick={() => window.location.reload()}
                   className="flex-1"
                 >
-                  Rejouer
+                  Replay
                 </Button>
                 <Button
                   onClick={() => navigate('/')}
                   className="flex-1 bg-gradient-gold text-noir hover:opacity-90"
                 >
-                  Retour au dashboard
+                  Back to dashboard
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </div>
@@ -185,7 +185,7 @@ const PEAGame = () => {
             </div>
             
             <div className="px-4 py-2 bg-card rounded-xl border border-border">
-              <div className="text-sm text-muted-foreground">Vies</div>
+              <div className="text-sm text-muted-foreground">Lives</div>
               <div className="flex gap-1">
                 {[...Array(3)].map((_, idx) => (
                   <Star
@@ -214,7 +214,7 @@ const PEAGame = () => {
               </Badge>
             </div>
             <CardTitle className="text-3xl font-serif mb-2">
-              Ce placement est-il éligible au PEA ?
+              Is this investment eligible for PEA?
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -236,7 +236,7 @@ const PEAGame = () => {
                 className="h-20 text-lg bg-success hover:bg-success/90 text-white"
               >
                 <CheckCircle2 className="mr-2 w-6 h-6" />
-                Éligible
+                Eligible
               </Button>
               
               <Button
@@ -245,13 +245,13 @@ const PEAGame = () => {
                 className="h-20 text-lg bg-destructive hover:bg-destructive/90 text-white"
               >
                 <XCircle className="mr-2 w-6 h-6" />
-                Non éligible
+                Not eligible
               </Button>
             </div>
 
             <div className="mt-6 p-4 bg-muted/50 rounded-xl text-center">
               <p className="text-sm text-muted-foreground">
-                💡 Indice : Le PEA accepte uniquement les actions de l'Union Européenne
+                💡 Hint: The PEA only accepts European Union shares
               </p>
             </div>
           </CardContent>
