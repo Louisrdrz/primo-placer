@@ -1,5 +1,6 @@
 import { Coins, Banknote, TrendingUp, Building2 } from "lucide-react";
 import OnboardingOption from "./OnboardingOption";
+import OnboardingCharacter from "./OnboardingCharacter";
 
 interface InheritanceAmountStepProps {
   onNext: (value: string) => void;
@@ -32,27 +33,19 @@ const InheritanceAmountStep = ({ onNext }: InheritanceAmountStepProps) => {
   ];
 
   return (
-    <div className="animate-fade-in">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-foreground mb-4">
-          What's the approximate amount you've inherited?
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          This helps us tailor investment strategies to your situation
-        </p>
-      </div>
-
-      <div className="space-y-3">
-        {options.map((option) => (
-          <OnboardingOption
-            key={option.value}
-            label={option.label}
-            icon={option.icon}
-            onClick={() => onNext(option.value)}
-          />
-        ))}
-      </div>
-    </div>
+    <OnboardingCharacter
+      question="What's the approximate amount you've inherited?"
+      subtitle="This helps us tailor investment strategies to your situation"
+    >
+      {options.map((option) => (
+        <OnboardingOption
+          key={option.value}
+          label={option.label}
+          icon={option.icon}
+          onClick={() => onNext(option.value)}
+        />
+      ))}
+    </OnboardingCharacter>
   );
 };
 

@@ -1,5 +1,6 @@
 import { Shield, TrendingUp, Zap, Flame } from "lucide-react";
 import OnboardingOption from "./OnboardingOption";
+import OnboardingCharacter from "./OnboardingCharacter";
 
 interface RiskToleranceStepProps {
   onNext: (value: string) => void;
@@ -32,27 +33,19 @@ const RiskToleranceStep = ({ onNext }: RiskToleranceStepProps) => {
   ];
 
   return (
-    <div className="animate-fade-in">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-foreground mb-4">
-          How do you feel about investment risk?
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          There's no wrong answer - we'll match strategies to your comfort level
-        </p>
-      </div>
-
-      <div className="space-y-3">
-        {options.map((option) => (
-          <OnboardingOption
-            key={option.value}
-            label={option.label}
-            icon={option.icon}
-            onClick={() => onNext(option.value)}
-          />
-        ))}
-      </div>
-    </div>
+    <OnboardingCharacter
+      question="How do you feel about investment risk?"
+      subtitle="There's no wrong answer - we'll match strategies to your comfort level"
+    >
+      {options.map((option) => (
+        <OnboardingOption
+          key={option.value}
+          label={option.label}
+          icon={option.icon}
+          onClick={() => onNext(option.value)}
+        />
+      ))}
+    </OnboardingCharacter>
   );
 };
 

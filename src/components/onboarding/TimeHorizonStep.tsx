@@ -1,5 +1,6 @@
 import { Clock, Calendar, CalendarRange, Hourglass } from "lucide-react";
 import OnboardingOption from "./OnboardingOption";
+import OnboardingCharacter from "./OnboardingCharacter";
 
 interface TimeHorizonStepProps {
   onNext: (value: string) => void;
@@ -32,27 +33,19 @@ const TimeHorizonStep = ({ onNext }: TimeHorizonStepProps) => {
   ];
 
   return (
-    <div className="animate-fade-in">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-foreground mb-4">
-          When do you think you'll need this money?
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          Your time horizon affects which investment options are best for you
-        </p>
-      </div>
-
-      <div className="space-y-3">
-        {options.map((option) => (
-          <OnboardingOption
-            key={option.value}
-            label={option.label}
-            icon={option.icon}
-            onClick={() => onNext(option.value)}
-          />
-        ))}
-      </div>
-    </div>
+    <OnboardingCharacter
+      question="When do you think you'll need this money?"
+      subtitle="Your time horizon affects which investment options are best for you"
+    >
+      {options.map((option) => (
+        <OnboardingOption
+          key={option.value}
+          label={option.label}
+          icon={option.icon}
+          onClick={() => onNext(option.value)}
+        />
+      ))}
+    </OnboardingCharacter>
   );
 };
 
