@@ -3,9 +3,9 @@ import { Check, PlayCircle, TrendingUp, GraduationCap } from "lucide-react";
 
 const steps = [
   { id: 1, title: "Questionnaire", icon: Check, status: "completed" },
-  { id: 2, title: "Vidéos interactives", icon: PlayCircle, status: "current" },
-  { id: 3, title: "Prévision de gains", icon: TrendingUp, status: "upcoming" },
-  { id: 4, title: "Mini-formations & quiz", icon: GraduationCap, status: "upcoming" },
+  { id: 2, title: "Interactive Videos", icon: PlayCircle, status: "current" },
+  { id: 3, title: "Gain Projection", icon: TrendingUp, status: "upcoming" },
+  { id: 4, title: "Mini-courses & Quizzes", icon: GraduationCap, status: "upcoming" },
 ];
 
 const ProgressPath = () => {
@@ -14,9 +14,9 @@ const ProgressPath = () => {
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-xl font-bold">Ton parcours personnalisé</h3>
+        <h3 className="text-xl font-bold">Your personalized journey</h3>
         <div className="flex items-center gap-2">
-          <span className="text-sm font-semibold text-muted-foreground">Progression :</span>
+          <span className="text-sm font-semibold text-muted-foreground">Progress:</span>
           <span className="text-2xl font-bold text-primary">{progress}%</span>
         </div>
       </div>
@@ -39,7 +39,7 @@ const ProgressPath = () => {
             >
               {step.status === "current" && (
                 <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
-                  Prochaine
+                  Next
                 </div>
               )}
               
@@ -64,7 +64,7 @@ const ProgressPath = () => {
               </p>
               
               {step.status === "completed" && (
-                <div className="mt-2 text-xs font-medium text-success">✓ Terminé</div>
+                <div className="mt-2 text-xs font-medium text-success">✓ Completed</div>
               )}
             </div>
           );
