@@ -15,7 +15,7 @@ const OnboardingCharacter = ({
       <div className="flex items-start gap-6 mb-8">
         <div className="flex-shrink-0 animate-scale-in">
           <div className="relative">
-            <img alt="Your BNP Heritage advisor" src="/lovable-uploads/d72d9fcc-c282-449c-a4d8-d2003dccd3bc.png" className="w-28 h-16 rounded-3xl border-2 border-primary/20 shadow-lg object-contain" />
+            <img alt="Your BNP Heritage advisor" src="/lovable-uploads/d72d9fcc-c282-449c-a4d8-d2003dccd3bc.png" className="w-20 h-20 rounded-3xl border-2 border-primary/20 shadow-lg object-cover" />
             <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-primary rounded-full border-4 border-background animate-pulse" />
           </div>
         </div>
