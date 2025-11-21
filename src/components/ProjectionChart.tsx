@@ -52,7 +52,7 @@ const ProjectionChart = () => {
               <h4 className="font-semibold text-destructive">Without guidance</h4>
             </div>
             <p className="text-sm text-muted-foreground mb-4">No optimized strategy</p>
-            <div className="text-4xl font-bold text-destructive mb-2">€{data[data.length - 1].without.toLocaleString()}</div>
+            <div className="text-4xl font-bold text-destructive mb-2">€{(data[data.length - 1].without * 1000).toLocaleString('fr-FR')}</div>
             <p className="text-xs text-muted-foreground">Final value after 10 years</p>
           </div>
           
@@ -62,7 +62,7 @@ const ProjectionChart = () => {
               <h4 className="font-semibold text-success">With Edufin Learning</h4>
             </div>
             <p className="text-sm text-muted-foreground mb-4">Optimized personalized strategy</p>
-            <div className="text-4xl font-bold text-success mb-2">€{data[data.length - 1].with.toLocaleString()}</div>
+            <div className="text-4xl font-bold text-success mb-2">€{(data[data.length - 1].with * 1000).toLocaleString('fr-FR')}</div>
             <p className="text-xs text-muted-foreground">Final value after 10 years</p>
           </div>
         </div>
@@ -112,7 +112,7 @@ const ProjectionChart = () => {
           <div className="flex items-center gap-3">
             <TrendingUp className="w-6 h-6 text-warning-foreground" />
             <div>
-              <p className="font-bold text-lg">Potential difference: +€{(data[data.length - 1].with - data[data.length - 1].without).toLocaleString()}</p>
+              <p className="font-bold text-lg">Potential difference: +€{((data[data.length - 1].with - data[data.length - 1].without) * 1000).toLocaleString('fr-FR')}</p>
               <p className="text-sm text-muted-foreground">thanks to better investment decisions</p>
             </div>
           </div>
